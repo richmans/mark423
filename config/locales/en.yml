@@ -31,3 +31,4 @@
 
 en:
   login: "Log in"
+  login_failed: "Wrong email or password"

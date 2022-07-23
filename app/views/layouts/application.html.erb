@@ -12,6 +12,9 @@
 
   <body>
     <%= render "layouts/navigation" %>
+     <% flash.each do |type, msg| %>
+      <%= content_tag :div, msg, class: build_alert_classes(type) %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
