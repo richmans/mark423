@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  shortname: MyString
+  copyright: MyString
+  author: MyString
+  email: MyString@my.string
+  keywords: MyString
+
+two:
+  name: MyString2
+  shortname: MyString2
+  copyright: MyString
+  author: MyString
+  email: MyString@my.string
+  keywords: MyString

@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_23_050330) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_23_095604) do
+  create_table "podcasts", force: :cascade do |t|
+    t.string "name"
+    t.string "shortname"
+    t.string "copyright"
+    t.string "author"
+    t.string "email"
+    t.string "keywords"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"

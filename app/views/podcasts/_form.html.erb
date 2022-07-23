@@ -1,0 +1,47 @@
+<%= form_with(model: podcast) do |form| %>
+  <% if podcast.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(podcast.errors.count, "error") %> prohibited this podcast from being saved:</h2>
+
+      <ul>
+        <% podcast.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :shortname, style: "display: block" %>
+    <%= form.text_field :shortname %>
+  </div>
+
+  <div>
+    <%= form.label :copyright, style: "display: block" %>
+    <%= form.text_field :copyright %>
+  </div>
+
+  <div>
+    <%= form.label :author, style: "display: block" %>
+    <%= form.text_field :author %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :keywords, style: "display: block" %>
+    <%= form.text_field :keywords %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
