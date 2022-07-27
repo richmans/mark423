@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :podcasts
+  resources :recordings
+  resources :podcasts 
   resources :users
   root "home#index"
   get '/login', to: 'sessions#login'
