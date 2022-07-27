@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @privilege %>
+
+<div>
+  <%= link_to "Edit this privilege", edit_privilege_path(@privilege) %> |
+  <%= link_to "Back to privileges", privileges_path %>
+
+  <%= button_to "Destroy this privilege", @privilege, method: :delete %>
+</div>
