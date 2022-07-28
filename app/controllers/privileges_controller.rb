@@ -1,6 +1,7 @@
 class PrivilegesController < ApplicationController
   before_action :set_privilege, only: %i[ show edit update destroy ]
-
+  before_action :set_podcast
+ 
   # GET /privileges or /privileges.json
   def index
     @privileges = Privilege.all
@@ -25,7 +26,7 @@ class PrivilegesController < ApplicationController
 
     respond_to do |format|
       if @privilege.save
-        format.html { redirect_to privilege_url(@privilege), notice: "Privilege was successfully created." }
+        format.html { redirect_to podcast_privilege_url(@podcast, @privilege), notice: "Privilege was successfully created." }
         format.json { render :show, status: :created, location: @privilege }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class PrivilegesController < ApplicationController
   def update
     respond_to do |format|
       if @privilege.update(privilege_params)
-        format.html { redirect_to privilege_url(@privilege), notice: "Privilege was successfully updated." }
+        format.html { redirect_to podcast_privilege_url(@podcast, @privilege), notice: "Privilege was successfully updated." }
         format.json { render :show, status: :ok, location: @privilege }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class PrivilegesController < ApplicationController
     @privilege.destroy
 
     respond_to do |format|
-      format.html { redirect_to privileges_url, notice: "Privilege was successfully destroyed." }
+      format.html { redirect_to podcast_privileges_url(@podcast), notice: "Privilege was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -61,6 +62,10 @@ class PrivilegesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_privilege
       @privilege = Privilege.find(params[:id])
+    end
+
+    def set_podcast
+      @podcast = Podcast.find(params[:podcast_id])
     end
 
     # Only allow a list of trusted parameters through.

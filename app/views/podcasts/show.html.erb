@@ -2,8 +2,14 @@
 
 <%= render @podcast %>
 
+
+<% @podcast.privileges.each do |privilege| %>
+    <%= render privilege %>
+<% end %>
+
 <div>
   <%= link_to "Edit this podcast", edit_podcast_path(@podcast) %> |
+  <%= link_to "Privileges for this podcast", podcast_privileges_path(@podcast) %> |
   <%= link_to "Back to podcasts", podcasts_path %>
 
   <%= button_to "Destroy this podcast", @podcast, method: :delete %>

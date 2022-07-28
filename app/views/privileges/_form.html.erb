@@ -1,4 +1,4 @@
-<%= form_with(model: privilege) do |form| %>
+<%= form_with(model: [@podcast, privilege]) do |form| %>
   <% if privilege.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(privilege.errors.count, "error") %> prohibited this privilege from being saved:</h2>
@@ -13,17 +13,18 @@
 
   <div>
     <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
+    <%= form.collection_select(:user_id, User.all, :id, :full_name) %>
   </div>
 
   <div>
     <%= form.label :podcast_id, style: "display: block" %>
-    <%= form.text_field :podcast_id %>
+    <%= form.collection_select(:podcast_id, Podcast.all, :id, :name) %>
+    
   </div>
 
   <div>
     <%= form.label :role, style: "display: block" %>
-    <%= form.number_field :role %>
+    <%= form.select :role, options_for_select(enum_to_dict(Privilege.roles)) %>
   </div>
 
   <div>
