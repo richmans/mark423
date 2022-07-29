@@ -4,7 +4,7 @@ class PrivilegesController < ApplicationController
  
   # GET /privileges or /privileges.json
   def index
-    @privileges = Privilege.all
+    @privileges = @podcast.privileges
   end
 
   # GET /privileges/1 or /privileges/1.json

@@ -4,8 +4,3 @@ one:
   user: one
   podcast: one
   role: 1
-
-two:
-  user: two
-  podcast: two
-  role: 1

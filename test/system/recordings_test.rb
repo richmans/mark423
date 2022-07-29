@@ -6,11 +6,13 @@ class RecordingsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
+    login_admin
     visit recordings_url
     assert_selector "h1", text: "Recordings"
   end
 
   test "should create recording" do
+    login_admin
     visit recordings_url
     click_on "New recording"
 
@@ -27,6 +29,7 @@ class RecordingsTest < ApplicationSystemTestCase
   end
 
   test "should update Recording" do
+    login_admin
     visit recording_url(@recording)
     click_on "Edit this recording", match: :first
 
@@ -43,6 +46,7 @@ class RecordingsTest < ApplicationSystemTestCase
   end
 
   test "should destroy Recording" do
+    login_admin
     visit recording_url(@recording)
     click_on "Destroy this recording", match: :first
 

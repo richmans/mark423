@@ -7,11 +7,3 @@ one:
   recorded_at: 2022-07-26 21:51:25
   published: false
   description: MyText
-
-two:
-  podcast: two
-  speaker: MyString
-  theme: MyString
-  recorded_at: 2022-07-26 21:51:25
-  published: false
-  description: MyText

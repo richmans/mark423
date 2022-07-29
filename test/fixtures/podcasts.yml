@@ -7,11 +7,3 @@ one:
   author: MyString
   email: MyString@my.string
   keywords: MyString
-
-two:
-  name: MyString2
-  shortname: MyString2
-  copyright: MyString
-  author: MyString
-  email: MyString@my.string
-  keywords: MyString
