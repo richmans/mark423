@@ -17,7 +17,6 @@ class RecordingsTest < ApplicationSystemTestCase
     click_on "New recording"
 
     fill_in "Description", with: @recording.description
-    fill_in "Podcast", with: @recording.podcast_id
     check "Published" if @recording.published
     fill_in "Recorded at", with: @recording.recorded_at
     fill_in "Speaker", with: @recording.speaker
@@ -34,7 +33,6 @@ class RecordingsTest < ApplicationSystemTestCase
     click_on "Edit this recording", match: :first
 
     fill_in "Description", with: @recording.description
-    fill_in "Podcast", with: @recording.podcast_id
     check "Published" if @recording.published
     fill_in "Recorded at", with: @recording.recorded_at
     fill_in "Speaker", with: @recording.speaker

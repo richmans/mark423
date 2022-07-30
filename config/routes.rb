@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :podcasts do
     resources :privileges
   end
+  post '/switch_podcast', to: 'sessions#switch_podcast'
+  get '/noprivilege', to: 'request_podcast#index'
   resources :users
   root "home#index"
   get '/login', to: 'sessions#login'

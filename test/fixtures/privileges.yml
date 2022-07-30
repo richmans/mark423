@@ -1,6 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  user: admin
+  podcast: one
+  role: 3
+two:
   user: one
   podcast: one
-  role: 1
+  role: 0

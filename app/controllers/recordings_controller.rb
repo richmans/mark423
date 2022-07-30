@@ -3,7 +3,7 @@ class RecordingsController < ApplicationController
 
   # GET /recordings or /recordings.json
   def index
-    @recordings = Recording.all
+    @recordings = current_podcast.recordings
   end
 
   # GET /recordings/1 or /recordings/1.json
@@ -22,7 +22,8 @@ class RecordingsController < ApplicationController
   # POST /recordings or /recordings.json
   def create
     @recording = Recording.new(recording_params)
-
+    @recording.podcast_id = current_podcast.id
+    
     respond_to do |format|
       if @recording.save
         format.html { redirect_to recording_url(@recording), notice: "Recording was successfully created." }
@@ -65,6 +66,6 @@ class RecordingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recording_params
-      params.require(:recording).permit(:podcast_id, :speaker, :theme, :recorded_at, :published, :description)
+      params.require(:recording).permit(:speaker, :theme, :recorded_at, :published, :description)
     end
 end

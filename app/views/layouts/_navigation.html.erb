@@ -4,5 +4,13 @@
   <%= link_to "Users", users_path %>
   <%= link_to "Podcasts", podcasts_path %>
   <%= link_to "Recordings", recordings_path %>
+  <span><%=current_user.full_name %></span> - 
+  
+  <span>
+    <%= form_tag switch_podcast_path, {:class => "inline-form"} do %>
+      <%=select :podcast, :id, current_user.podcasts.collect{|a|[a.name, a.id]}, {:selected => current_podcast.id}, :onchange => 'this.form.submit()' %>
+    <% end %>
+    
+  </span> - 
   <%= link_to "Logout", logout_path %>
 </nav>
