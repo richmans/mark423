@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :current_podcast
   helper_method :logged_in?
-  before_action :authorized
+  before_action :authenticated
   before_action :privileged
 
   def current_user
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     !current_podcast.nil?
   end
 
-  def authorized
+  def authenticated
     redirect_to login_path unless logged_in?
   end
   def privileged
