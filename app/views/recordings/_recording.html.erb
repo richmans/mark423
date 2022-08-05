@@ -18,7 +18,14 @@
     <strong>Published:</strong>
     <%= recording.published %>
   </p>
-
+  <p>
+    <strong>Audio:</strong>
+    <% if recording.audio_file.attached? %>
+    <%= audio_tag url_for(recording.audio_file), controls: true, preload: "none" %>
+    <% else %>
+    <p>No audio</p>
+    <% end %>
+  </p>
   <p>
     <strong>Description:</strong>
     <%= recording.description %>
