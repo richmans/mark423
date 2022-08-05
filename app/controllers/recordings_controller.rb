@@ -13,6 +13,7 @@ class RecordingsController < ApplicationController
   # GET /recordings/new
   def new
     @recording = Recording.new
+    @recording.recorded_at = Time.now()
   end
 
   # GET /recordings/1/edit

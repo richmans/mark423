@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_27_194228) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_31_113904) do
   create_table "podcasts", force: :cascade do |t|
     t.string "name"
     t.string "shortname"
@@ -60,6 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_27_194228) do
     t.string "full_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_admin"
   end
 
   add_foreign_key "privileges", "podcasts"

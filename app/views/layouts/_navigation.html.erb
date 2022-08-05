@@ -4,7 +4,7 @@
   <%= link_to "Users", users_path %>
   <%= link_to "Podcasts", podcasts_path %>
   <%= link_to "Recordings", recordings_path %>
-  <span><%=current_user.full_name %></span> - 
+  <span><%=current_user.full_name %> (<%=current_role %>)</span> - 
   
   <span>
     <%= form_tag switch_podcast_path, {:class => "inline-form"} do %>

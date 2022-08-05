@@ -2,7 +2,9 @@ one:
   password_digest: <%= BCrypt::Password.create('dirk', cost: 5) %>
   full_name: Dirk
   email: dirk@mark423.test
+  is_admin: false
 admin:
   password_digest: <%= BCrypt::Password.create('admin', cost: 5) %>
   full_name: Admin
   email: admin@mark423.test
+  is_admin: true

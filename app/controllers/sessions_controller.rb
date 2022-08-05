@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorized, only: [:login, :create, :forgot, :forgot_form, :reset, :reset_form, :do_reset]
+  skip_before_action :authenticated, only: [:login, :create, :forgot, :forgot_form, :reset, :reset_form, :do_reset]
   skip_before_action :privileged, only: [:login, :create, :forgot, :forgot_form, :reset, :reset_form, :do_reset, :logout, :destroy]
   layout "clean"
   def create

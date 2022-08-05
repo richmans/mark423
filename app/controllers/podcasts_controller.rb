@@ -1,5 +1,6 @@
 class PodcastsController < ApplicationController
   before_action :set_podcast, only: %i[ show edit update destroy ]
+  before_action :authorized_admin
 
   # GET /podcasts or /podcasts.json
   def index

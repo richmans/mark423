@@ -29,7 +29,10 @@
     <%= form.label :full_name, style: "display: block" %>
     <%= form.text_field :full_name %>
   </div>
-
+  <% if is_admin? %>
+    <%= form.label :is_admin, style: "display:block" %>
+    <%= form.check_box :is_admin %>
+  <% end %>
   <div>
     <%= form.submit %>
   </div>
