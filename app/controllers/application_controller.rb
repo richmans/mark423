@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
 
   def authorized_admin
     if not is_admin?
-      redirect_to Rails.configuration.access_denied_url, allow_other_host: true
+      redirect_to login_path
     end
   end
 end

@@ -32,3 +32,42 @@
 en:
   login: "Log in"
   login_failed: "Wrong email or password"
+  podcast_destroyed:  "Podcast was successfully destroyed."
+  podcast_created: "Podcast was successfully created."
+  podcast_updated:  "Podcast was successfully updated." 
+  privilege_created:  "Privilege was successfully created."
+  privilege_updated: "Privilege was successfully updated."
+  privilege_destroyed: "Privilege was successfully destroyed."
+  recording_created: "Recording was successfully created."
+  recording_updated: "Recording was successfully updated."
+  recording_destroyed: "Recording was successfully destroyed."
+  user_created: "User was successfully created."
+  user_updated: "User was successfully updated."
+  user_destroyed: "User was successfully destroyed."
+  home: "Home"
+  users: "Users"
+  podcasts: "Podcasts"
+  recordings: "Recordings"
+  logout: "Logout"
+  login: "Login"
+  error: error
+  prohibited_saved: "prohibited this podcast from being saved"
+  name: name
+  shortname: "short name"
+  copyright: copyright
+  author: author
+  email: email
+  keywords: keywords
+  activerecord:
+    models:
+      podcast: podcast
+      user: user
+      privilege: privilege
+      recording: recording
+      
+  helpers:
+    submit:
+      create: "Create %{model}"
+      submit: "Save %{model}"
+      update: "Update %{model}"
+

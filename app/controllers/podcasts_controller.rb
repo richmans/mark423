@@ -26,7 +26,7 @@ class PodcastsController < ApplicationController
 
     respond_to do |format|
       if @podcast.save
-        format.html { redirect_to podcast_url(@podcast), notice: "Podcast was successfully created." }
+        format.html { redirect_to podcast_url(@podcast), notice: I18n.t("podcast_created") }
         format.json { render :show, status: :created, location: @podcast }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class PodcastsController < ApplicationController
   def update
     respond_to do |format|
       if @podcast.update(podcast_params)
-        format.html { redirect_to podcast_url(@podcast), notice: "Podcast was successfully updated." }
+        format.html { redirect_to podcast_url(@podcast), notice: I18n.t("podcast_updated") }
         format.json { render :show, status: :ok, location: @podcast }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class PodcastsController < ApplicationController
     @podcast.destroy
 
     respond_to do |format|
-      format.html { redirect_to podcasts_url, notice: "Podcast was successfully destroyed." }
+      format.html { redirect_to podcasts_url, notice: I18n.t("podcast_destroyed") }
       format.json { head :no_content }
     end
   end

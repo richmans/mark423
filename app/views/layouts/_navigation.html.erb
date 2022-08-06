@@ -1,9 +1,9 @@
 <nav>
   <span class='logo'>Mark423</span>
-  <%= link_to "Home", root_path %>
-  <%= link_to "Users", users_path %>
-  <%= link_to "Podcasts", podcasts_path %>
-  <%= link_to "Recordings", recordings_path %>
+  <%= link_to t("home"), root_path %>
+  <%= link_to t("users"), users_path %>
+  <%= link_to t("podcasts"), podcasts_path %>
+  <%= link_to t("recordings"), recordings_path %>
   <span><%=current_user.full_name %> (<%=current_role %>)</span> - 
   
   <span>
@@ -12,5 +12,5 @@
     <% end %>
     
   </span> - 
-  <%= link_to "Logout", logout_path %>
+  <%= link_to t("Logout"), logout_path %>
 </nav>

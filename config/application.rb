@@ -10,7 +10,6 @@ module Mark423
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
-    config.access_denied_url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
    
     # Configuration for the application, engines, and railties goes here.
     #
