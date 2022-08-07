@@ -1,14 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Privileges</h1>
+<h1><%=t(:privileges)%></h1>
 
 <div id="privileges">
   <% @privileges.each do |privilege| %>
     <%= render privilege %>
     <p>
-      <%= link_to "Show this privilege", podcast_privilege_path(@podcast, privilege) %>
+      <%= link_to t(:model_show, model: Privilege), podcast_privilege_path(@podcast, privilege) %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New privilege", new_podcast_privilege_path(@podcast) %>
+<%= link_to t(:model_new, model: Privilege), new_podcast_privilege_path(@podcast) %>

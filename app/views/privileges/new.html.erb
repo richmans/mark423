@@ -1,9 +1,9 @@
-<h1>New privilege</h1>
+<h1><%=t(:model_new, model: Privilege)%></h1>
 
 <%= render "form", privilege: @privilege %>
 
 <br>
 
 <div>
-  <%= link_to "Back to privileges", podcast_privileges_path(@podcast) %>
+  <%= link_to t(:model_back_to_index, model: Privilege), podcast_privileges_path(@podcast) %>
 </div>

@@ -3,8 +3,8 @@
 <%= render @recording %>
 
 <div>
-  <%= link_to "Edit this recording", edit_recording_path(@recording) %> |
-  <%= link_to "Back to recordings", recordings_path %>
+  <%= link_to t(:model_edit, model: Recording), edit_recording_path(@recording) %> |
+  <%= link_to t(:model_back_to_index, model: Recording), recordings_path %>
 
-  <%= button_to "Destroy this recording", @recording, method: :delete %>
+  <%= button_to t(:model_destroy, model: Recording), @recording, method: :delete %>
 </div>

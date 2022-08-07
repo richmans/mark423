@@ -1,14 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Recordings</h1>
+<h1><%=t(:recordings)%></h1>
 
 <div id="recordings">
   <% @recordings.each do |recording| %>
     <%= render recording %>
     <p>
-      <%= link_to "Show this recording", recording %>
+      <%= link_to t(:model_show, model: Recording), recording %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New recording", new_recording_path %>
+<%= link_to t(:model_new, model: Recording), new_recording_path %>

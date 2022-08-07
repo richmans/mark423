@@ -3,8 +3,8 @@
 <%= render @privilege %>
 
 <div>
-  <%= link_to "Edit this privilege",edit_podcast_privilege_path(@podcast, @privilege) %> |
-  <%= link_to "Back to privileges", podcast_privileges_path(@podcast) %>
+  <%= link_to t(:model_edit, model: Privilege),edit_podcast_privilege_path(@podcast, @privilege) %> |
+  <%= link_to t(:model_back_to_index, model: Privilege), podcast_privileges_path(@podcast) %>
 
-  <%= button_to "Destroy this privilege", podcast_privilege_path(@podcast, @privilege), method: :delete %>
+  <%= button_to t(:model_destroy, model: Privilege), podcast_privilege_path(@podcast, @privilege), method: :delete %>
 </div>

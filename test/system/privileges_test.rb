@@ -15,11 +15,11 @@ class PrivilegesTest < ApplicationSystemTestCase
   test "should create privilege" do
     login_admin
     visit podcast_privileges_url(@podcast)
-    click_on "New privilege"
+    click_on "New Privilege"
     find("select[name='privilege[user_id]']").find(:option, text: :Dirk).select_option 
     find("select[name='privilege[podcast_id]']").find(:option, text: :MyString).select_option 
     find("select[name='privilege[role]']").find(:option, text: :Viewer).select_option 
-    click_on "Create Privilege"
+    click_on "Create privilege"
 
     assert_text "Privilege was successfully created"
     click_on "Back"
@@ -28,12 +28,12 @@ class PrivilegesTest < ApplicationSystemTestCase
   test "should update Privilege" do
     login_admin
     visit podcast_privilege_url(@podcast, @privilege)
-    click_on "Edit this privilege", match: :first
+    click_on "Edit this Privilege", match: :first
     find("select[name='privilege[user_id]']").find(:option, text: :Dirk).select_option 
     find("select[name='privilege[podcast_id]']").find(:option, text: :MyString).select_option 
     find("select[name='privilege[role]']").find(:option, text: :Viewer).select_option 
     
-    click_on "Update Privilege"
+    click_on "Update privilege"
 
     assert_text "Privilege was successfully updated"
     click_on "Back"
@@ -42,7 +42,7 @@ class PrivilegesTest < ApplicationSystemTestCase
   test "should destroy Privilege" do
     login_admin
     visit podcast_privilege_url(@podcast, @privilege)
-    click_on "Destroy this privilege", match: :first
+    click_on "Destroy this Privilege", match: :first
 
     assert_text "Privilege was successfully destroyed"
   end

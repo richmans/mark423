@@ -14,13 +14,13 @@ class UsersTest < ApplicationSystemTestCase
   test "should create user" do
     login_admin
     visit users_url
-    click_on "New user"
+    click_on "New User"
 
-    fill_in "Email", with: "newuser@mark423.test"
-    fill_in "Full name", with: "New user"
-    fill_in "Password", with: "dirk"
-    fill_in "Password confirmation", with: "dirk"
-    click_on "Create User"
+    fill_in "email", with: "newuser@mark423.test"
+    fill_in "full name", with: "New user"
+    fill_in "password", with: "dirk"
+    fill_in "password confirmation", with: "dirk"
+    click_on "Create user"
 
     assert_text "User was successfully created"
     click_on "Back"
@@ -29,13 +29,13 @@ class UsersTest < ApplicationSystemTestCase
   test "should update User" do
     login_admin
     visit user_url(@user)
-    click_on "Edit this user", match: :first
+    click_on "Edit this User", match: :first
 
-    fill_in "Email", with: @user.email
-    fill_in "Full name", with: @user.full_name
-    fill_in "Password", with: "dirk"
-    fill_in "Password confirmation", with: "dirk"
-    click_on "Update User"
+    fill_in "email", with: @user.email
+    fill_in "full name", with: @user.full_name
+    fill_in "password", with: "dirk"
+    fill_in "password confirmation", with: "dirk"
+    click_on "Update user"
 
     assert_text "User was successfully updated"
     click_on "Back"
@@ -44,7 +44,7 @@ class UsersTest < ApplicationSystemTestCase
   test "should destroy User" do
     login_admin
     visit user_url(@user)
-    click_on "Destroy this user", match: :first
+    click_on "Destroy this User", match: :first
 
     assert_text "User was successfully destroyed"
   end

@@ -1,7 +1,7 @@
 <%= form_with(model: [@podcast, privilege]) do |form| %>
   <% if privilege.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(privilege.errors.count, "error") %> prohibited this privilege from being saved:</h2>
+      <h2><%= pluralize(privilege.errors.count, "error") %> <%=t("probihited_saved")%>:</h2>
 
       <ul>
         <% privilege.errors.each do |error| %>

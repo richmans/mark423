@@ -60,8 +60,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_05_051249) do
     t.index ["user_id"], name: "index_privileges_on_user_id"
   end
 
-# Could not dump table "recordings" because of following StandardError
-#   Unknown type 'attachment' for column 'audio_file'
+  create_table "recordings", force: :cascade do |t|
+    t.integer "podcast_id", null: false
+    t.string "speaker"
+    t.string "theme"
+    t.datetime "recorded_at", precision: nil
+    t.boolean "published"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["podcast_id"], name: "index_recordings_on_podcast_id"
+  end
 
   create_table "user_podcasts", force: :cascade do |t|
     t.integer "user_id", null: false

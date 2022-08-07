@@ -21,9 +21,7 @@
   <p>
     <strong>Audio:</strong>
     <% if recording.audio_file.attached? %>
-    <% if recording.audio_file.analyzed? %>
-    <br/><strong>Duration:</strong><%= ActiveSupport::Duration.build(recording.audio_file.metadata['duration'].round()).inspect %><br/>
-    <% end %>
+    <br/><strong>Duration:</strong><%= recording_duration(recording) %><br/>
     <%= audio_tag url_for(recording.audio_file), controls: true, preload: "none" %>
     <% else %>
     <p>No audio</p>

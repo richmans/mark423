@@ -1,9 +1,9 @@
-<h1>New podcast</h1>
+<h1><%=t(:model_new, model: Podcast)%></h1>
 
 <%= render "form", podcast: @podcast %>
 
 <br>
 
 <div>
-  <%= link_to "Back to podcasts", podcasts_path %>
+  <%= link_to t(:model_back_to_index, model: Podcast), podcasts_path %>
 </div>

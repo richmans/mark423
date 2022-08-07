@@ -32,39 +32,58 @@
 en:
   login: "Log in"
   login_failed: "Wrong email or password"
-  podcast_destroyed:  "Podcast was successfully destroyed."
-  podcast_created: "Podcast was successfully created."
-  podcast_updated:  "Podcast was successfully updated." 
-  privilege_created:  "Privilege was successfully created."
-  privilege_updated: "Privilege was successfully updated."
-  privilege_destroyed: "Privilege was successfully destroyed."
-  recording_created: "Recording was successfully created."
-  recording_updated: "Recording was successfully updated."
-  recording_destroyed: "Recording was successfully destroyed."
-  user_created: "User was successfully created."
-  user_updated: "User was successfully updated."
-  user_destroyed: "User was successfully destroyed."
+
+  model_destroyed: "%{model} was successfully destroyed."
+  model_created: "%{model} was successfully created."
+  model_updated: "%{model} was successfully updated."  
+  model_show: Show this %{model}
+  model_edit: Edit this %{model}
+  model_back_to_index: Back to %{model} list
+  model_new: New %{model}
+  model_destroy: Destroy this %{model}
+  model_editting: Editting %{model}
   home: "Home"
   users: "Users"
   podcasts: "Podcasts"
   recordings: "Recordings"
   logout: "Logout"
-  login: "Login"
+  login: "Log in"
   error: error
-  prohibited_saved: "prohibited this podcast from being saved"
-  name: name
-  shortname: "short name"
-  copyright: copyright
-  author: author
-  email: email
-  keywords: keywords
+  privileges_for_this_podcast: privileges for this podcast
+  prohibited_saved: "prohibited this item from being saved"
+  no_podcasts: You have no podcasts :-( Send an email to the administrator to get access to podcasts.
   activerecord:
     models:
       podcast: podcast
       user: user
       privilege: privilege
       recording: recording
-      
+    attributes:
+      podcast:
+        name: name
+        shortname: shortname
+        copyright: copyright
+        author: author
+        email: email
+        keywords: keywords
+      user:
+        email: email
+        password: password
+        full_name: full name
+        is_admin: is admin
+        password_confirmation: password confirmation
+      recording:
+        speaker: speaker
+        theme: theme
+        recorded_at: recorded at
+        published: published
+        audio_file: audio file
+        description: description
+      privilege:
+        user: user
+        podcast: podcast
+        role: role
+
   helpers:
     submit:
       create: "Create %{model}"

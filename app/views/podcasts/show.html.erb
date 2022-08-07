@@ -8,9 +8,9 @@
 <% end %>
 
 <div>
-  <%= link_to "Edit this podcast", edit_podcast_path(@podcast) %> |
-  <%= link_to "Privileges for this podcast", podcast_privileges_path(@podcast) %> |
-  <%= link_to "Back to podcasts", podcasts_path %>
+  <%= link_to t(:model_edit, model: Podcast), edit_podcast_path(@podcast) %> |
+  <%= link_to t(:privileges_for_this_podcast), podcast_privileges_path(@podcast) %> |
+  <%= link_to t(:model_back_to_index, model: Podcast), podcasts_path %>
 
-  <%= button_to "Destroy this podcast", @podcast, method: :delete %>
+  <%= button_to t(:model_destroy, model: Podcast), @podcast, method: :delete %>
 </div>

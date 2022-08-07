@@ -14,15 +14,15 @@ class PodcastsTest < ApplicationSystemTestCase
   test "should create podcast" do
     login_admin
     visit podcasts_url
-    click_on "New podcast"
+    click_on "New Podcast"
 
-    fill_in "Author", with: @podcast.author
-    fill_in "Copyright", with: @podcast.copyright
-    fill_in "Email", with: @podcast.email
-    fill_in "Keywords", with: @podcast.keywords
-    fill_in "Name", with: @podcast.name
-    fill_in "Shortname", with: @podcast.shortname+ "-copy"
-    click_on "Create Podcast"
+    fill_in "author", with: @podcast.author
+    fill_in "copyright", with: @podcast.copyright
+    fill_in "email", with: @podcast.email
+    fill_in "keywords", with: @podcast.keywords
+    fill_in "name", with: @podcast.name
+    fill_in "shortname", with: @podcast.shortname+ "-copy"
+    click_on "Create podcast"
 
     assert_text "Podcast was successfully created"
     click_on "Back"
@@ -31,15 +31,15 @@ class PodcastsTest < ApplicationSystemTestCase
   test "should update Podcast" do
     login_admin
     visit podcast_url(@podcast)
-    click_on "Edit this podcast", match: :first
+    click_on "Edit this Podcast", match: :first
 
-    fill_in "Author", with: @podcast.author
-    fill_in "Copyright", with: @podcast.copyright
-    fill_in "Email", with: @podcast.email
-    fill_in "Keywords", with: @podcast.keywords
-    fill_in "Name", with: @podcast.name
-    fill_in "Shortname", with: @podcast.shortname
-    click_on "Update Podcast"
+    fill_in "author", with: @podcast.author
+    fill_in "copyright", with: @podcast.copyright
+    fill_in "email", with: @podcast.email
+    fill_in "keywords", with: @podcast.keywords
+    fill_in "name", with: @podcast.name
+    fill_in "shortname", with: @podcast.shortname
+    click_on "Update podcast"
 
     assert_text "Podcast was successfully updated"
     click_on "Back"
@@ -48,7 +48,7 @@ class PodcastsTest < ApplicationSystemTestCase
   test "should destroy Podcast" do
     login_admin
     visit podcast_url(@podcast)
-    click_on "Destroy this podcast", match: :first
+    click_on "Destroy this Podcast", match: :first
 
     assert_text "Podcast was successfully destroyed"
   end

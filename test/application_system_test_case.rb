@@ -14,4 +14,10 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   def login_admin
     login_as("admin@mark423.test", "admin")
   end
+
+  # Cleanup activestorage files
+  def after_teardown
+    super
+    FileUtils.rm_rf(ActiveStorage::Blob.service.root)
+  end
 end
