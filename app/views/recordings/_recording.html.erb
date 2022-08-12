@@ -32,4 +32,10 @@
     <%= recording.description %>
   </p>
 
+  <% if recording.image_file.attached?  %>
+    <%= image_tag recording.image_file.variant(:thumb) %>
+  <% elsif recording.podcast.image_file.attached? %>
+    <%= image_tag recording.podcast.image_file.variant(:thumb) %>
+  <% end %>
+
 </div>

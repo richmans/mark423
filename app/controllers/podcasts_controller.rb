@@ -66,6 +66,6 @@ class PodcastsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def podcast_params
-      params.require(:podcast).permit(:name, :shortname, :copyright, :author, :email, :keywords)
+      params.require(:podcast).permit(:name, :shortname, :copyright, :author, :email, :keywords, :image_file)
     end
 end

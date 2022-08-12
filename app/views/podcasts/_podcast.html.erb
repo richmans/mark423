@@ -29,4 +29,7 @@
     <%= podcast.keywords %>
   </p>
 
+  <% if podcast.image_file.attached?  %>
+    <%= image_tag podcast.image_file.variant(:thumb) %>
+  <% end %>
 </div>

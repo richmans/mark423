@@ -33,11 +33,15 @@
 
   <div>
     <%= form.label :audio_file, style: "display: block" %>
-    <%= form.file_field :audio_file %>
+    <%= form.file_field :audio_file, accept: 'audio/mp3' %>
   </div>
   <div>
     <%= form.label :description, style: "display: block" %>
     <%= form.text_area :description %>
+  </div>
+   <div>
+    <%= form.label :image_file, style: "display: block" %>
+    <%= form.file_field :image_file, accept: 'image/png,image/gif,image/jpeg' %>
   </div>
 
   <div>

@@ -40,6 +40,13 @@
     <%= form.label :keywords, style: "display: block" %>
     <%= form.text_field :keywords %>
   </div>
+   <div>
+    <% if podcast.image_file.attached?  %>
+      <%= image_tag podcast.image_file.variant(:thumb) %>
+    <% end %>
+    <%= form.label :image_file, style: "display: block" %>
+    <%= form.file_field :image_file, accept: 'image/png,image/gif,image/jpeg' %>
+  </div>
   <div>
     <%= form.submit %>
   </div>
