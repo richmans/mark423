@@ -23,6 +23,7 @@ class RecordingsTest < ApplicationSystemTestCase
     fill_in "speaker", with: @recording.speaker
     fill_in "theme", with: @recording.theme
     attach_file('recording_audio_file', Rails.root + 'test/fixtures/files/gameover.mp3', make_visible: true)
+    attach_file "recording_image_file", file_fixture("fun.jpeg")
     click_on "Create recording"
 
     assert_text "Recording was successfully created"
@@ -44,6 +45,7 @@ class RecordingsTest < ApplicationSystemTestCase
     fill_in "speaker", with: @recording.speaker
     fill_in "theme", with: @recording.theme
     attach_file('recording_audio_file', Rails.root + 'test/fixtures/files/swoosh.mp3', make_visible: true)
+    attach_file "recording_image_file", file_fixture("fun.jpeg")
     click_on "Update recording"
 
     assert_text "Recording was successfully updated"
