@@ -1,0 +1,12 @@
+ {
+    id: '<%=recording.id%>',
+    title: '<%=recording.theme%>',
+    guid: '<%=recording.guid%>',
+    description: "<%= (recording.description.blank?) ? js_escape(@podcast.description) : js_escape(recording.description) %>",
+    url: "<%=url%>",
+    length: "<%=file_size%>", 
+    type: "<%=file_type%>",
+    date: "<%=recording.recorded_at.strftime("%a, %-d %b %Y %H:%M:%S %z")%>",
+    duration: <%=recording.length%>,
+    speaker: "<%=recording.speaker%>"
+}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_05_051249) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_26_181656) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -48,6 +48,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_05_051249) do
     t.string "keywords"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
+    t.string "language"
+    t.boolean "explicit"
+    t.text "category"
+    t.string "website"
   end
 
   create_table "privileges", force: :cascade do |t|
@@ -69,17 +74,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_05_051249) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "filename"
     t.index ["podcast_id"], name: "index_recordings_on_podcast_id"
-  end
-
-  create_table "user_podcasts", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "podcast_id", null: false
-    t.integer "role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["podcast_id"], name: "index_user_podcasts_on_podcast_id"
-    t.index ["user_id"], name: "index_user_podcasts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -96,6 +92,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_05_051249) do
   add_foreign_key "privileges", "podcasts"
   add_foreign_key "privileges", "users"
   add_foreign_key "recordings", "podcasts"
-  add_foreign_key "user_podcasts", "podcasts"
-  add_foreign_key "user_podcasts", "users"
 end

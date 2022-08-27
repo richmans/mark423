@@ -15,7 +15,10 @@ module Mark423
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
-    #
+
+    config.app_domain = ENV['APP_DOMAIN'] || 'mark423.com'
+    config.podcast_domain = ENV['PODCAST_DOMAIN'] || 'podcast.' + config.app_domain
+    
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
   end

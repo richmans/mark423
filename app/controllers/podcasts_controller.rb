@@ -1,7 +1,7 @@
 class PodcastsController < ApplicationController
   before_action :set_podcast, only: %i[ show edit update destroy ]
   before_action :authorized_admin
-
+  
   # GET /podcasts or /podcasts.json
   def index
     @podcasts = Podcast.all
@@ -66,6 +66,6 @@ class PodcastsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def podcast_params
-      params.require(:podcast).permit(:name, :shortname, :copyright, :author, :email, :keywords, :image_file)
+      params.require(:podcast).permit(:name, :shortname, :website, :copyright, :author, :email, :description, :language, :keywords, :image_file, :explicit, :category)
     end
 end

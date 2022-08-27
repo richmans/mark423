@@ -1,0 +1,15 @@
+var mark423Podcast = {
+    title: "<%=@podcast.title%>",
+    description: "<%=js_escape @podcast.description%>",
+    language: "<%=@podcast.language%>",
+    built: "<%=Time.now.strftime("%a, %-d %b %Y %H:%M:%S %z")%>",
+    author: "<%=@podcast.author%>",
+    <% if @podcast.image_file.attached? %>
+      image: "<%=@podcast.image_file %>",
+    <% end %>
+    items: [
+    <% @podcast.visible_recordings.each do |recording| %>
+       <%=render :partial => 'item', :locals => {:recording => recording, :url => recording.url, :file_size => recording.file_size, :file_type => recording.file_type} %>,
+    <% end %>
+    ]
+}

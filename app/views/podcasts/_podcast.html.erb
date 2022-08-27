@@ -5,6 +5,11 @@
   </p>
 
   <p>
+    <strong>Website:</strong>
+    <%= podcast.website %>
+  </p>
+
+  <p>
     <strong>Shortname:</strong>
     <%= podcast.shortname %>
   </p>
@@ -28,6 +33,14 @@
     <strong>Keywords:</strong>
     <%= podcast.keywords %>
   </p>
+  <p>
+    <strong>Description:</strong>
+    <%= podcast.description %>
+  </p>
+  <p>
+  <b>Explicit:</b>
+  <%= podcast.explicit %>
+</p>
 
   <% if podcast.image_file.attached?  %>
     <%= image_tag podcast.image_file.variant(:thumb) %>

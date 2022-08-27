@@ -1,0 +1,37 @@
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+  <channel>
+    <atom:link href="<%=@podcast.rss_link%>" rel="self" type="application/rss+xml"/>
+    <title><%=@podcast.name%></title>
+    <description><%=@podcast.description%></description>
+    <link><%=@podcast.website%></link>
+    <language><%=@podcast.language%></language>
+    <copyright><%=@podcast.copyright%></copyright>
+    <lastBuildDate><%=Time.now.strftime("%a, %-d %b %Y %H:%M:%S %z")%></lastBuildDate>
+    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+    <itunes:author><%=@podcast.author%></itunes:author>
+    <itunes:type>episodic</itunes:type>
+    <itunes:owner>
+      <itunes:name><%=@podcast.author%></itunes:name>
+      <% unless @podcast.email.empty? %>
+      <itunes:email><%=@podcast.email%></itunes:email>
+      <% end %>
+    </itunes:owner>
+    <% if @podcast.image_file.attached? %>
+      <itunes:image href="<%=@podcast.picture_link%>"/>
+    <% end %>
+    <itunes:explicit><%=(@podcast.explicit)?"yes":"no"%></itunes:explicit>
+    <% @podcast.each_category do |category, sub_categories| %>
+    <itunes:category text="<%=category%>">
+        <% sub_categories.each do |sub_category| %>
+        <itunes:category text="<%=sub_category%>"/>
+        <% end %>
+    </itunes:category>
+    <% end  %>
+    <% if @podcast.image_file.attached? %>
+    <media:thumbnail url="<%=@podcast.picture_link%>"/>
+    <% end %>
+    <% @podcast.visible_recordings.each do |recording| %>
+<%=render :partial => 'item', :locals => {:recording => recording, :file_size => recording.audio_file.byte_size, :file_type => recording.audio_file.content_type} %>       
+    <% end %>
+  </channel>
+</rss>
