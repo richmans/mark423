@@ -8,8 +8,8 @@ local:
   
 dev:
   service: S3
-  access_key_id: "np3heggSs1X2rxGI"
-  secret_access_key: "FfYirTQjCDAx6UnjXtQ1AxGlapmH4roL"
+  access_key_id: "nTSv30iIodSzSi6P"
+  secret_access_key: "oZOwpd1bGouy3mNlDUErqKfNcUXP9YR8"
   bucket: "mark"
   endpoint: "http://localhost:9000"
   force_path_style: true

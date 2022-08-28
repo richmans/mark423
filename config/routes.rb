@@ -1,9 +1,7 @@
-require 'podcast_domain'
 Rails.application.routes.draw do
-  constraints(PodcastDomain) do
-    get '/:podcast/:filename', to: 'hosting#redirect'
-    get '*path', to: 'hosting#not_found'
-  end
+  get '/published/:podcast/podcast', to: 'hosting#fetch_podcast'
+  get '/published/:podcast/:filename', to: 'hosting#fetch_recording'
+  get '/published/*path', to: 'hosting#not_found'
   resources :recordings
   resources :podcasts do
     resources :privileges

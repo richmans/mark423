@@ -1,4 +1,4 @@
-class PodcastsController < ApplicationController
+class PodcastsController < AdminController
   before_action :set_podcast, only: %i[ show edit update destroy ]
   before_action :authorized_admin
   

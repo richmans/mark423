@@ -1,4 +1,4 @@
-class PrivilegesController < ApplicationController
+class PrivilegesController < AdminController
   before_action :set_privilege, only: %i[ show edit update destroy ]
   before_action :set_podcast
  

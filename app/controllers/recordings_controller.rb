@@ -1,4 +1,4 @@
-class RecordingsController < ApplicationController
+class RecordingsController < AdminController
   before_action :set_recording, only: %i[ show edit update destroy ]
 
   # GET /recordings or /recordings.json

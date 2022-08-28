@@ -1,4 +1,4 @@
-class RenderController < ApplicationController
+class RenderController < AdminController
   skip_before_action :authenticated
   skip_before_action :privileged
   before_action :set_podcast

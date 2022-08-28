@@ -3,14 +3,17 @@
   <%= link_to t("home"), root_path %>
   <%= link_to t("users"), users_path %>
   <%= link_to t("podcasts"), podcasts_path %>
-  <%= link_to t("recordings"), recordings_path %>
+  <% unless current_podcast.nil? %>
+    <%= link_to t("recordings"), recordings_path %>
+  <% end %>
   <span><%=current_user.full_name %> (<%=current_role %>)</span> - 
   
   <span>
+  <% unless current_podcast.nil? %>
     <%= form_tag switch_podcast_path, {:class => "inline-form"} do %>
-      <%=select :podcast, :id, current_user.podcasts.collect{|a|[a.name, a.id]}, {:selected => current_podcast.id}, :onchange => 'this.form.submit()' %>
+      <%=select :podcast, :id, current_user.podcasts.collect{|a|[a.name, a.id]}, {:selected => current_podcast.id }, :onchange => 'this.form.submit()' %>
     <% end %>
-    
+  <% end %>
   </span> - 
   <%= link_to t("logout"), logout_path %>
 </nav>
