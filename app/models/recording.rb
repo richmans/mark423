@@ -23,7 +23,7 @@ class Recording < ApplicationRecord
     uncounted_filename += recorded_at.strftime("%Y%m%d")
     new_filename = uncounted_filename
     counter = 1
-    while Recording.where(["filename like '#{new_filename}.%' and not id=?", id]).any? do
+    while Recording.where(filename: new_filename).where.not(id: id).any? do
       counter += 1
       new_filename = "#{uncounted_filename}-#{counter}"
     end

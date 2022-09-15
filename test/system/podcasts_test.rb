@@ -21,6 +21,7 @@ class PodcastsTest < ApplicationSystemTestCase
     fill_in "email", with: @podcast.email
     fill_in "keywords", with: @podcast.keywords
     fill_in "name", with: @podcast.name
+    fill_in "podcast_category", with: "{}"
     fill_in "shortname", with: @podcast.shortname+ "-copy"
     attach_file "podcast_image_file", file_fixture("podcast2.jpg")
     click_on "Create podcast"
@@ -40,6 +41,7 @@ class PodcastsTest < ApplicationSystemTestCase
     fill_in "keywords", with: @podcast.keywords
     fill_in "name", with: @podcast.name
     fill_in "shortname", with: @podcast.shortname
+    fill_in "podcast_category", with: "{}"
     attach_file "podcast_image_file", file_fixture("podcast.jpg")
     click_on "Update podcast"
 
