@@ -17,7 +17,7 @@ module Mark423
     # in config/environments, which are processed later.
 
     config.app_domain = ENV['APP_DOMAIN'] || 'mark423.com'
-    config.podcast_domain = ENV['PODCAST_DOMAIN'] || 'podcast.' + config.app_domain
+    config.podcast_host = ENV['PODCAST_HOST'] || 'https://' +  config.app_domain + '/podcasts'
     
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")

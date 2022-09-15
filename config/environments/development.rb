@@ -59,8 +59,8 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.podcast_host = ENV['PODCAST_HOST'] || 'podcast.localhost:3000'
-  config.app_url = ENV['APP_URL'] || 'localhost:3000`'
+  config.podcast_host = ENV['PODCAST_HOST'] || 'http://localhost:3000/podcasts'
+  config.app_url = ENV['APP_URL'] || 'http://localhost:3000`'
     
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

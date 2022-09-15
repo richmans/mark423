@@ -13,11 +13,11 @@
       <enclosure url="<%=recording.audio_link%>" length="<%=file_size%>" type="<%=file_type%>"/>
       <category>Podcasts</category>
       <pubDate><%=recording.recorded_at.strftime("%a, %-d %b %Y %H:%M:%S %z")%></pubDate>
-      <itunes:duration><%=recording.duration%> </itunes:duration>
+      <itunes:duration><%=format_duration recording.duration%></itunes:duration>
       <itunes:author><%=recording.speaker%></itunes:author>
       <itunes:explicit><%=(@podcast.explicit)? "yes" : "no"%></itunes:explicit>
       <itunes:keywords><%=@podcast.keywords%></itunes:keywords>
       <% if recording.image_file.attached? %>
-        <itunes:image href="<%=recording.image_link%>"/>
+      <itunes:image href="<%=recording.image_link%>"/>
       <% end %>
     </item>

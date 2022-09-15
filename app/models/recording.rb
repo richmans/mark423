@@ -31,7 +31,7 @@ class Recording < ApplicationRecord
   end
 
   def audio_link
-    self.podcast.dir + self.filename
+    self.podcast.dir + self.filename + '.mp3'
   end
 
   def image_link

@@ -45,7 +45,7 @@ class Podcast < ApplicationRecord
   end
 
   def dir
-    "https://#{Rails.application.config.podcast_domain}/podcasts/#{self.shortname}/"
+    "#{Rails.application.config.podcast_host}/#{self.shortname}/"
   end
 
   def rss_link
