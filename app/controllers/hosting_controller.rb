@@ -8,8 +8,10 @@ class HostingController < ApplicationController
     return nope if podcast.nil?
     recording = podcast.recordings.find_by(filename: params[:filename])
     return nope if recording.nil? || ! recording.audio_file.attached? || ! recording.audio_file.analyzed?
-    url = recording.audio_file.url
-    redirect_to url, status: :found
+    respond_to do |format| 
+      format.mp3 { redirect_to  recording.audio_file.url, status: :found}
+      format.jpeg { redirect_to  recording.image_file.url, status: :found}
+    end
   end
 
   def fetch_podcast

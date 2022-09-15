@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get '/published/:podcast/podcast', to: 'hosting#fetch_podcast'
-  get '/published/:podcast/:filename', to: 'hosting#fetch_recording'
-  get '/published/*path', to: 'hosting#not_found'
+  get '/podcasts/:podcast/podcast', to: 'hosting#fetch_podcast'
+  get '/podcasts/:podcast/:filename', to: 'hosting#fetch_recording'
   scope '/admin' do
     resources :recordings
     resources :podcasts do

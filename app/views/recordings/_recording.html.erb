@@ -31,7 +31,10 @@
     <strong>Description:</strong>
     <%= recording.description %>
   </p>
-
+  <p>
+    <strong>Filename: </strong>
+    <%= recording.filename %>
+  </p>
   <% if recording.image_file.attached?  %>
     <%= image_tag recording.image_file.variant(:thumb) %>
   <% elsif recording.podcast.image_file.attached? %>

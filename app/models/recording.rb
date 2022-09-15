@@ -11,13 +11,13 @@ class Recording < ApplicationRecord
   before_update :set_filename
 
   def set_filename
-    self.filename = get_filename('mp3')
+    self.filename = get_filename()
     if self.audio_file.attached?
       self.audio_file.blob.update(filename: filename)
     end
   end
 
-  def get_filename(extension)
+  def get_filename()
     uncounted_filename  = speaker[0..20].parameterize + "-" unless speaker.nil?
     uncounted_filename += theme[0..30].parameterize + "-" unless theme.nil?
     uncounted_filename += recorded_at.strftime("%Y%m%d")
@@ -27,7 +27,7 @@ class Recording < ApplicationRecord
       counter += 1
       new_filename = "#{uncounted_filename}-#{counter}"
     end
-    new_filename + "." + extension
+    new_filename
   end
 
   def audio_link

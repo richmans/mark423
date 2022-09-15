@@ -13,6 +13,7 @@ dev:
   bucket: "mark"
   endpoint: "http://localhost:9000"
   force_path_style: true
+  public: true
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3
