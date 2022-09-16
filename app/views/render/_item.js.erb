@@ -1,12 +1,12 @@
  {
     id: '<%=recording.id%>',
     title: '<%=recording.theme%>',
-    guid: '<%=recording.guid%>',
+    guid: '<%=recording.audio_link%>',
     description: "<%= (recording.description.blank?) ? js_escape(@podcast.description) : js_escape(recording.description) %>",
-    url: "<%=url%>",
-    length: "<%=file_size%>", 
-    type: "<%=file_type%>",
+    url: "<%=recording.audio_link%>",
+    length: "<%=recording.audio_file.byte_size%>", 
+    type: "audio/mpeg",
     date: "<%=recording.recorded_at.strftime("%a, %-d %b %Y %H:%M:%S %z")%>",
-    duration: <%=recording.length%>,
+    duration: <%=recording.audio_file.metadata['duration'].floor() %>,
     speaker: "<%=recording.speaker%>"
 }
