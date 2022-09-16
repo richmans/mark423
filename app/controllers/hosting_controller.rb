@@ -1,4 +1,5 @@
 class HostingController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def nope
     render plain: "nope", status: :not_found
   end
@@ -20,6 +21,8 @@ class HostingController < ApplicationController
     respond_to do |format|
       format.jpeg { redirect_to podcast.image_file.url, status: :found }
       format.rss { redirect_to url_for(podcast.rss_file), status: :found}
+      format.js { redirect_to url_for(podcast.js_file), status: :found}
+      
     end
   end 
 

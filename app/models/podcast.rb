@@ -12,6 +12,7 @@ class Podcast < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [100, 100]
   end
   has_one_attached :rss_file
+  has_one_attached :js_file
 
 
   def visible_recordings
@@ -52,7 +53,12 @@ class Podcast < ApplicationRecord
     self.dir + "podcast.rss"
   end
 
+  def js_link
+    self.dir + "podcast.rss"
+  end
+
   def picture_link
+    # TODO: This should either be podcast.jpg or podcast.png
     self.dir + self.image_file.filename.to_s
   end
 
