@@ -52,6 +52,11 @@ en:
   privileges_for_this_podcast: privileges for this podcast
   prohibited_saved: "prohibited this item from being saved"
   no_podcasts: You have no podcasts :-( Send an email to the administrator to get access to podcasts.
+  not_published_because_not_visible: Not marked visible
+  not_published_because_no_speaker: No speaker
+  not_published_because_no_theme: No theme
+  not_published_because_no_audio: No audio file uploaded
+  not_published_because_audio_not_analyzed: Audio file was not analyzed yet
   activerecord:
     models:
       podcast: podcast

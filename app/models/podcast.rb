@@ -5,18 +5,23 @@ class Podcast < ApplicationRecord
   validates :shortname, presence: true, uniqueness: true
   validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP
   validate :validate_category
-  after_create :schedule_render
-  after_update :schedule_render
-  
+
   has_one_attached :image_file do |attachable|
     attachable.variant :thumb, resize_to_limit: [100, 100]
   end
   has_one_attached :rss_file
   has_one_attached :js_file
 
+  before_save :increment_version
+  after_touch :schedule_render
+  after_commit :schedule_render, on: [:create, :update]
+  
+  def increment_version
+    self.version += 1
+  end
 
   def visible_recordings
-    recordings.reject{|r|not r.published or not r.publishable}
+    self.recordings.where(published: true).max(@max_recordings)
   end
 
   def self.categories
@@ -63,7 +68,7 @@ class Podcast < ApplicationRecord
   end
 
   def schedule_render
-    GeneratePodcastJob.perform_later self
+    GeneratePodcastJob.perform_later self, self.version
   end
 
   def self.languages

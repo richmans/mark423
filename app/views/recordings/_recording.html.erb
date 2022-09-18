@@ -19,6 +19,10 @@
     <%= recording.published %>
   </p>
   <p>
+    <strong>Visible:</strong>
+    <%= recording.visible %>
+  </p>
+  <p>
     <strong>Audio:</strong>
     <% if recording.audio_file.attached? %>
     <br/><strong>Duration:</strong><%= recording_duration(recording) %><br/>

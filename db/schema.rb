@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_26_181656) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_18_105518) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -53,6 +53,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_26_181656) do
     t.boolean "explicit"
     t.text "category"
     t.string "website"
+    t.integer "max_recordings", default: 100
+    t.integer "version", default: 0
+    t.integer "rendered_version", default: 0
+    t.integer "rendering_version", default: 0
   end
 
   create_table "privileges", force: :cascade do |t|
@@ -75,6 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_26_181656) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "filename"
+    t.boolean "visible"
     t.index ["podcast_id"], name: "index_recordings_on_podcast_id"
   end
 

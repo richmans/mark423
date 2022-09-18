@@ -67,6 +67,6 @@ class RecordingsController < AdminController
 
     # Only allow a list of trusted parameters through.
     def recording_params
-      params.require(:recording).permit(:speaker, :theme, :recorded_at, :published, :description, :audio_file, :image_file)
+      params.require(:recording).permit(:speaker, :theme, :recorded_at, :visible, :description, :audio_file, :image_file)
     end
 end

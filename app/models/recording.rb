@@ -1,14 +1,37 @@
 class Recording < ApplicationRecord
-  belongs_to :podcast
+  belongs_to :podcast, touch: true
   has_one_attached :audio_file
   has_one_attached :image_file do |attachable|
     attachable.variant :thumb, resize_to_limit: [100, 100]
   end
-  after_destroy :schedule_render
-  after_update :schedule_render
-  after_create :schedule_render
   before_create :set_filename
   before_update :set_filename
+  before_update :set_published
+  before_create :set_published
+  scope :published, -> { where(published: true) }
+  
+  def set_published
+    self.published = self.not_published_because().length == 0
+  end
+
+  def not_published_because
+    reasons = []
+    if self.visible != true
+      reasons << I18n.t("not_published_because_not_visible")
+    end
+    if self.speaker.blank?
+      reasons << I18n.t("not_published_because_no_speaker")
+    end
+    if self.theme.blank?
+      reasons << I18n.t("not_published_because_no_theme")
+    end
+    if not self.audio_file.attached?
+      reasons << I18n.t("not_published_because_no_audio")
+    elsif not self.audio_file.analyzed?
+      reasons << I18n.t("not_published_because_audio_not_analyzed")
+    end
+    reasons
+  end
 
   def set_filename
     self.filename = get_filename()
