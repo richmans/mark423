@@ -12,16 +12,11 @@ class Podcast < ApplicationRecord
   has_one_attached :rss_file
   has_one_attached :js_file
 
-  before_save :increment_version
-  after_touch :schedule_render
   after_commit :schedule_render, on: [:create, :update]
-  
-  def increment_version
-    self.version += 1
-  end
+  after_touch :schedule_render
 
   def visible_recordings
-    self.recordings.where(published: true).max(@max_recordings)
+    self.recordings.where(published: true).max(self.max_recordings)
   end
 
   def self.categories
@@ -68,7 +63,8 @@ class Podcast < ApplicationRecord
   end
 
   def schedule_render
-    GeneratePodcastJob.perform_later self, self.version
+    logger.info("SCHEDULING RENDER")
+    GeneratePodcastJob.set(wait_until: 4.seconds.from_now).perform_later self, self.updated_at
   end
 
   def self.languages

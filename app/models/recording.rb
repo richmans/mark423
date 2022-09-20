@@ -9,7 +9,19 @@ class Recording < ApplicationRecord
   before_update :set_published
   before_create :set_published
   scope :published, -> { where(published: true) }
-  
+  after_touch :maybe_publish
+
+  def maybe_publish
+    logger.info("WHAAAAHALSJFLASDJFLAJFLAJLKJJFLKAJDFLAJFLJ")
+    was_published = self.published
+    self.set_published
+    if was_published != self.published
+      self.save
+      return true
+    end
+    false
+  end
+
   def set_published
     self.published = self.not_published_because().length == 0
   end
@@ -30,6 +42,7 @@ class Recording < ApplicationRecord
     elsif not self.audio_file.analyzed?
       reasons << I18n.t("not_published_because_audio_not_analyzed")
     end
+    logger.info("REASONS: " + reasons.to_s)
     reasons
   end
 

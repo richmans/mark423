@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_18_105518) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_20_134135) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -54,9 +54,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_105518) do
     t.text "category"
     t.string "website"
     t.integer "max_recordings", default: 100
-    t.integer "version", default: 0
-    t.integer "rendered_version", default: 0
-    t.integer "rendering_version", default: 0
+    t.datetime "rendering", precision: nil
+    t.datetime "rendered", precision: nil
   end
 
   create_table "privileges", force: :cascade do |t|
