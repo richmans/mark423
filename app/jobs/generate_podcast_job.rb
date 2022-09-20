@@ -9,6 +9,7 @@ class GeneratePodcastJob < ApplicationJob
       podcast.reload
       if podcast.updated_at > version
         logger.info("Skipping podcast #{podcast.shortname} render #{version} because a newer job is scheduled")
+        return false
       end
       if !podcast.rendered.nil? &&  podcast.rendered >= version
         logger.info("Skipping podcast #{podcast.shortname} render #{version} because a newer job is rendered")

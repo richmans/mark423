@@ -64,7 +64,7 @@ class Podcast < ApplicationRecord
 
   def schedule_render
     logger.info("SCHEDULING RENDER")
-    GeneratePodcastJob.set(wait_until: 4.seconds.from_now).perform_later self, self.updated_at
+    GeneratePodcastJob.set(wait_until: 20.seconds.from_now).perform_later self, self.updated_at
   end
 
   def self.languages
