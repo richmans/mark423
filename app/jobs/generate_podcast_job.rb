@@ -33,11 +33,37 @@ class GeneratePodcastJob < ApplicationJob
 
   def perform(podcast, version)
     return if not lock_podcast(podcast, version)
-    logger.info("Rendering podcast #{podcast.name} version #{version}")
+    begin
+      logger.info("Rendering podcast #{podcast.name} version #{version}")
     
-    # Do the work
-    sleep 3
-
-    unlock_podcast(podcast, version)
+      # Do the work
+      rendered_string = RenderController.new.render_to_string(
+        template: 'render/show',
+        formats: [:js],
+        assigns: { podcast: podcast },
+        layout: false
+      )
+      podcast.js_file.attach(
+        io: StringIO.new(rendered_string),
+        filename: 'podcast.js',
+        content_type: 'application/json',
+        identify: false
+      )
+      rendered_string = RenderController.new.render_to_string(
+        template: 'render/show',
+        formats: [:rss],
+        assigns: { podcast: podcast },
+        layout: false
+      )
+      podcast.rss_file.attach(
+        io: StringIO.new(rendered_string),
+        filename: 'podcast.rss',
+        content_type: 'application/rss+xml',
+        identify: false
+      )
+    ensure
+      unlock_podcast(podcast, version)
+    end
   end
+
 end

@@ -12,7 +12,6 @@ class Recording < ApplicationRecord
   after_touch :maybe_publish
 
   def maybe_publish
-    logger.info("WHAAAAHALSJFLASDJFLAJFLAJLKJJFLKAJDFLAJFLJ")
     was_published = self.published
     self.set_published
     if was_published != self.published
