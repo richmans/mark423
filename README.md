@@ -14,3 +14,7 @@ To run the browser-based tests: `rails test:system`
 Clone this repository and run `bundle install` to install all dependencies.
 
 When the application is started, no users are defined. To create an admin account: `rails db:seed`. If an admin account is already present, this command will reset the password.
+
+## Jobs
+
+`RAILS_ENV=development bundle exec rake jobs:work`

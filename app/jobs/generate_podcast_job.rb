@@ -35,7 +35,7 @@ class GeneratePodcastJob < ApplicationJob
     return if not lock_podcast(podcast, version)
     begin
       logger.info("Rendering podcast #{podcast.name} version #{version}")
-    
+      podcast.skip_callbacks = true
       # Do the work
       rendered_string = RenderController.new.render_to_string(
         template: 'render/show',

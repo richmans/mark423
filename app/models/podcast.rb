@@ -5,6 +5,7 @@ class Podcast < ApplicationRecord
   validates :shortname, presence: true, uniqueness: true
   validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP
   validate :validate_category
+  attr_accessor :skip_callbacks
 
   has_one_attached :image_file do |attachable|
     attachable.variant :thumb, resize_to_limit: [100, 100]
@@ -12,8 +13,8 @@ class Podcast < ApplicationRecord
   has_one_attached :rss_file
   has_one_attached :js_file
 
-  after_commit :schedule_render, on: [:create, :update]
-  after_touch :schedule_render
+  after_commit :schedule_render, on: [:create, :update],  unless: :skip_callbacks
+  #after_touch :schedule_render, unless: :skip_callbacks
 
   def visible_recordings
     self.recordings.where(published: true).max(self.max_recordings)
@@ -64,7 +65,7 @@ class Podcast < ApplicationRecord
 
   def schedule_render
     logger.info("SCHEDULING RENDER")
-    GeneratePodcastJob.set(wait_until: 20.seconds.from_now).perform_later self, self.updated_at
+    GeneratePodcastJob.perform_later self, self.updated_at
   end
 
   def self.languages

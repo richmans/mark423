@@ -19,6 +19,7 @@ module Mark423
     config.app_domain = ENV['APP_DOMAIN'] || 'mark423.com'
     config.podcast_host = ENV['PODCAST_HOST'] || 'https://' +  config.app_domain + '/podcasts'
     
+    config.active_job.queue_adapter = :delayed_job
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
   end
