@@ -1,6 +1,9 @@
 <nav>
   <span class='logo'>Mark423</span>
   <%= link_to t("home"), root_path %>
+  <% if current_role == 'manager' %>
+  <%= link_to t("podcast"), current_podcast_path %>
+  <% end %>
   <% if current_user.is_admin? %>
   <%= link_to t("users"), users_path %>
   <%= link_to t("podcasts"), podcasts_path %>

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get '/noprivilege', to: 'request_podcast#index'  
   end
   get '/users/me', to: 'users#me', as: 'profile'
+  get '/podcasts/current', to: 'podcasts#current', as: 'current_podcast'
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'

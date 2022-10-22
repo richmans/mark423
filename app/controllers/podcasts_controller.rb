@@ -1,6 +1,6 @@
 class PodcastsController < AdminController
   before_action :set_podcast, only: %i[ show edit update destroy ]
-  before_action :authorized_admin
+  before_action :authorized_admin, except: [ :current, :update ]
   
   # GET /podcasts or /podcasts.json
   def index
@@ -20,6 +20,14 @@ class PodcastsController < AdminController
   def edit
   end
 
+  def current
+    unless current_role == 'manager'
+      raise ApplicationController::NotAuthorized
+    end
+    @podcast = current_podcast
+    render :edit
+  end
+
   # POST /podcasts or /podcasts.json
   def create
     @podcast = Podcast.new(podcast_params)
@@ -37,9 +45,18 @@ class PodcastsController < AdminController
 
   # PATCH/PUT /podcasts/1 or /podcasts/1.json
   def update
+    unless current_user.is_admin? || (current_role == 'manager' && current_podcast == @podcast)
+      format.html { render :new, status: :access_denied }
+      format.json { render json: {'access': 'denied'}, status: :access_denied }
+    end
+    if current_user.is_admin?
+      redirect = podcast_url(@podcast)
+    else
+      redirect = current_podcast_path
+    end
     respond_to do |format|
       if @podcast.update(podcast_params)
-        format.html { redirect_to podcast_url(@podcast), notice: I18n.t("model_updated", model: Podcast) }
+        format.html { redirect_to redirect, notice: I18n.t("model_updated", model: Podcast) }
         format.json { render :show, status: :ok, location: @podcast }
       else
         format.html { render :edit, status: :unprocessable_entity }

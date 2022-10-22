@@ -6,6 +6,7 @@ class AdminController < ApplicationController
   helper_method :current_role
   before_action :authenticated
   before_action :privileged
+  helper_method :is_at_least
 
   def current_user
     User.find_by(id: session[:user_id])
