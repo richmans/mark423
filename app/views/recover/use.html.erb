@@ -1,0 +1,10 @@
+<div>
+<h2><%=t(:forgot)%></h2>
+<p><%=t(:forgot_explain2)%></p>
+<%= form_tag do %>
+  <%=t :code%>: <%= text_field_tag :code %><br/>
+  <%=t :password%>: <%= password_field_tag :password %><br/>
+  <%=t :password_confirmation%>: <%= password_field_tag :password_confirmation%><br/>
+  <%= submit_tag t(:submit) %>
+<% end %>
+</div>

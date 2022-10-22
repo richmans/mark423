@@ -1,0 +1,8 @@
+<div>
+<h2><%=t(:forgot)%></h2>
+<p><%=t(:forgot_explain)%></p>
+<%= form_tag do %>
+  <%=t :email%>: <%= text_field_tag :email %><br/>
+  <%= submit_tag t(:submit) %>
+<% end %>
+</div>

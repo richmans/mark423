@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_16_105518) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_22_174847) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -97,6 +97,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_105518) do
     t.index ["podcast_id"], name: "index_recordings_on_podcast_id"
   end
 
+  create_table "recoveries", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "code"
+    t.datetime "valid_until", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_recoveries_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -111,4 +120,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_105518) do
   add_foreign_key "privileges", "podcasts"
   add_foreign_key "privileges", "users"
   add_foreign_key "recordings", "podcasts"
+  add_foreign_key "recoveries", "users"
 end

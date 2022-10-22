@@ -16,5 +16,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
   post '/logout', to: 'sessions#destroy'
+  get '/forgot', to: 'recover#new'
+  post '/forgot', to: 'recover#create', as: "create_recovery"
+  get '/forgot/reset', to: 'recover#use', as: "use_recovery"
+  post '/forgot/reset', to: 'recover#reset'
   root "home#index"
 end

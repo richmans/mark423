@@ -32,7 +32,11 @@
 en:
   login: "Log in"
   login_failed: "Wrong email or password"
-
+  submit: Save
+  password_reset_success: Your password has been updated
+  forgot_password: Forgot my password
+  forgot_explain: Please enter your email address. We will send you an email with a code to reset your password.
+  forgot_explain2: We have sent you an email containing a code. Please enter the code here, and choose a new password.
   model_destroyed: "%{model} was successfully destroyed."
   model_created: "%{model} was successfully created."
   model_updated: "%{model} was successfully updated."  

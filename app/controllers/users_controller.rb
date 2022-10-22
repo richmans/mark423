@@ -1,6 +1,7 @@
 class UsersController < AdminController
   before_action :set_user, only: %i[ show edit update destroy ]
-
+  before_action :authorized_admin
+  
   # GET /users or /users.json
   def index
     @users = User.all

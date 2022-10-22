@@ -1,6 +1,6 @@
 class SessionsController < AdminController
-  skip_before_action :authenticated, only: [:login, :create, :forgot, :forgot_form, :reset, :reset_form, :do_reset]
-  skip_before_action :privileged, only: [:login, :create, :forgot, :forgot_form, :reset, :reset_form, :do_reset, :logout, :destroy]
+  skip_before_action :authenticated, only: [:login,:create]
+  skip_before_action :privileged, only: [:create, :login, :destroy]
   layout "clean"
   def create
     @user = User.find_by(email: params[:email])

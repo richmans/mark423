@@ -1,8 +1,10 @@
 <nav>
   <span class='logo'>Mark423</span>
   <%= link_to t("home"), root_path %>
+  <% if current_user.is_admin? %>
   <%= link_to t("users"), users_path %>
   <%= link_to t("podcasts"), podcasts_path %>
+  <% end %>
   <% unless current_podcast.nil? %>
     <%= link_to t("recordings"), recordings_path %>
   <% end %>
