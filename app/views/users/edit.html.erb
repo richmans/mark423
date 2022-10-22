@@ -5,7 +5,8 @@
 <br>
 
 <div>
+<% if current_user.is_admin? %>
   <%= link_to t(:model_show, model: User), @user %> |
   <%= link_to t(:model_back_to_index, model: User), users_path %>
-
+<% end %>
 </div>

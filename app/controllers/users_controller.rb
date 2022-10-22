@@ -1,6 +1,6 @@
 class UsersController < AdminController
   before_action :set_user, only: %i[ show edit update destroy ]
-  before_action :authorized_admin
+  before_action :authorized_admin, except: [ :me, :update ]
   
   # GET /users or /users.json
   def index
@@ -16,6 +16,13 @@ class UsersController < AdminController
     @user = User.new
   end
 
+  # GET /users/me
+  def me
+    @user = current_user
+    render :edit
+  end
+
+  
   # GET /users/1/edit
   def edit
   end
@@ -37,9 +44,20 @@ class UsersController < AdminController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
+    unless current_user.is_admin? or @user == current_user
+      format.html { render :new, status: :access_denied }
+      format.json { render json: {'access': 'denied'}, status: :access_denied }
+    end
+    
+    if current_user.is_admin?
+      redirect = user_url(@user)
+    else
+      redirect = profile_path
+    end
+    
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice:I18n.t("model_updated", model: User) }
+        format.html { redirect_to redirect, notice:I18n.t("model_updated", model: User) }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -8,7 +8,7 @@
   <% unless current_podcast.nil? %>
     <%= link_to t("recordings"), recordings_path %>
   <% end %>
-  <span><%=current_user.full_name %> (<%=current_role %>)</span> - 
+  <span><%=current_user.full_name %>(<%=link_to "Me", profile_path%>) (<%=current_role %>)</span> - 
   
   <span>
   <% unless current_podcast.nil? %>

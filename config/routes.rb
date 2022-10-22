@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     post '/switch_podcast', to: 'sessions#switch_podcast'
     get '/noprivilege', to: 'request_podcast#index'  
   end
-  
+  get '/users/me', to: 'users#me', as: 'profile'
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
