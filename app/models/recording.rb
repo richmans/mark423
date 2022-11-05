@@ -16,13 +16,21 @@ class Recording < ApplicationRecord
     self.set_published
     if was_published != self.published
       self.save
+      if self.published
+        PublicationMailer.publication(self).deliver
+      end
       return true
     end
     false
   end
 
   def set_published
+    was_published = self.published
+    
     self.published = self.not_published_because().length == 0
+    if not was_published and self.published
+      PublicationMailer.publication(self).deliver_later
+    end
   end
 
   def not_published_because

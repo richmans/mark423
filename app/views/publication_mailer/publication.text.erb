@@ -1,0 +1,12 @@
+Good news!
+
+A new recording has just been published
+
+Speaker:        <%=@recording.speaker%>
+Theme:          <%=@recording.theme%>
+Recording time: <%=@recording.recorded_at.strftime("%d-%m-%Y %H:%M:%S")%>
+Duration:       <%=format_duration(@recording.audio_file.metadata['duration'])%>
+Filesize:       <%=@recording.audio_file.byte_size%> bytes
+
+Stay Awesome!
+The Mark423 notification monkey
