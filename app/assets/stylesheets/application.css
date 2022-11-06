@@ -16,3 +16,20 @@
 form.inline-form {
   display: inline;
 }
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 5px;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+nav ul li.split {
+  margin-left: auto;
+}

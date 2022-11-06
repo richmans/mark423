@@ -1,8 +1,8 @@
 <div>
-<h2><%=t(:login)%></h2>
+<h2><%=t(:login)%> <%=t(:to_mark423)%></h2>
 <%= form_tag '/login' do %>
-  <%=t :email%>: <%= text_field_tag :email %><br/>
-  <%=t :password%>: <%= password_field_tag :password %><br/>
+  <%= label_tag t :email%> <%= text_field_tag :email %><br/>
+  <%= label_tag t :password%> <%= password_field_tag :password %><br/>
   <%= submit_tag t(:login) %>
 <% end %>
 <%= link_to t(:forgot_password), forgot_path %>

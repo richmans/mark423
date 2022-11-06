@@ -1,24 +1,25 @@
 <nav>
-  <span class='logo'>Mark423</span>
-  <%= link_to t("home"), root_path %>
-  <% if current_role == 'manager' %>
-  <%= link_to t("podcast"), current_podcast_path %>
-  <% end %>
-  <% if current_user.is_admin? %>
-  <%= link_to t("users"), users_path %>
-  <%= link_to t("podcasts"), podcasts_path %>
-  <% end %>
-  <% unless current_podcast.nil? %>
-    <%= link_to t("recordings"), recordings_path %>
-  <% end %>
-  <span><%=current_user.full_name %>(<%=link_to "Me", profile_path%>) (<%=current_role %>)</span> - 
-  
-  <span>
-  <% unless current_podcast.nil? %>
-    <%= form_tag switch_podcast_path, {:class => "inline-form"} do %>
-      <%=select :podcast, :id, current_user.podcasts.collect{|a|[a.name, a.id]}, {:selected => current_podcast.id }, :onchange => 'this.form.submit()' %>
+  <ul>
+    <li class='logo'>Mark423</li>
+    <li><%= link_to t("home"), root_path %></li>
+    <% if current_role == 'manager' %>
+    <li><%= link_to t("podcast"), current_podcast_path %></li>
     <% end %>
-  <% end %>
-  </span> - 
-  <%= link_to t("logout"), logout_path %>
+    <% if current_user.is_admin? %>
+    <li><%= link_to t("users"), users_path %></li>
+    <li><%= link_to t("podcasts"), podcasts_path %></li>
+    <% end %>
+    <% unless current_podcast.nil? %>
+      <li><%= link_to t("recordings"), recordings_path %></li>
+    <% end %>
+    <li class='split'><%=current_user.full_name %>(<%=link_to "Me", profile_path%>) (<%=current_role %>)</li>
+    <li>
+    <% unless current_podcast.nil? %>
+      <%= form_tag switch_podcast_path, {:class => "inline-form"} do %>
+        <%=select :podcast, :id, my_podcasts, {:selected => current_podcast.id }, :onchange => 'this.form.submit()' %>
+      <% end %>
+    <% end %>
+    </li> 
+    <li><%= link_to t("logout"), logout_path %></li>
+  </ul>
 </nav>

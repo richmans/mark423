@@ -31,6 +31,9 @@
 
 en:
   login: "Log in"
+  to_mark423: to Mark423
+  email: Email
+  password: Password
   login_failed: "Wrong email or password"
   submit: Save
   password_reset_success: Your password has been updated

@@ -7,4 +7,11 @@ module ApplicationHelper
     Time.at(d.ceil).utc.strftime("%H:%M:%S")
   end
 
+  def current_controller()
+    controller.controller_name.to_s
+  end
+  
+  def current_action()
+    controller.action_name.to_s 
+  end
 end

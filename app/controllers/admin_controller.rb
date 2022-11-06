@@ -7,6 +7,15 @@ class AdminController < ApplicationController
   before_action :authenticated
   before_action :privileged
   helper_method :is_at_least
+  helper_method :my_podcasts
+
+  def my_podcasts
+    if is_admin?
+      return Podcast.all.collect{|a|[a.name, a.id]}
+    else
+      return current_user.podcasts.collect{|a|[a.name, a.id]}
+    end
+  end
 
   def current_user
     User.find_by(id: session[:user_id])
