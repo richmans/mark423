@@ -19,7 +19,7 @@ class SessionsController < AdminController
   end
   def switch_podcast
     podcast = Podcast.find(params[:podcast][:id])
-    if podcast.users.include? current_user
+    if podcast.users.include? current_user or is_admin?
       session[:podcast_id] = podcast.id
     end
     redirect_to recordings_path
