@@ -323,7 +323,7 @@ function mark423_install_player(){
   mark423Ready = true;
  
   document.querySelector('div#mark423-player div.jp-eject a').addEventListener("click", function(e) {
-    alert(m4t('download alert'));
+    //alert(m4t('download alert'));
     return false;
   })
   
@@ -393,9 +393,16 @@ function mark423_update_progress() {
   if (audio_tag.duration > 0 ) {
     percent = (audio_tag.currentTime / audio_tag.duration) * 100
   }
+  if (audio_tag.currentTime == audio_tag.duration) {
+    mark423_playback_done()
+  }
   document.querySelector("div.jp-play-bar").style.width = percent + "%";
 }
 
+function mark423_playback_done() {
+  mark423_pause()
+  audio_tag.currentTime = 0;
+}
 
 function mark423_load_podcast(){
  if (typeof mark423Podcast === 'undefined' || mark423Ready == false){
@@ -547,4 +554,4 @@ function mark423(options){
     mark423_load_podcast(); 
   }, false);
 }
-console.log('Mark423 player compiled at 2022-11-06 14:55:49 +0100');
+console.log('Mark423 player compiled at 2022-11-06 21:37:23 +0100');

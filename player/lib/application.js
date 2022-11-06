@@ -72,7 +72,7 @@ function mark423_install_player(){
   mark423Ready = true;
  
   document.querySelector('div#mark423-player div.jp-eject a').addEventListener("click", function(e) {
-    alert(m4t('download alert'));
+    //alert(m4t('download alert'));
     return false;
   })
   
