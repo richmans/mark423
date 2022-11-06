@@ -55,7 +55,7 @@ class Podcast < ApplicationRecord
   end
 
   def js_link
-    self.dir + "podcast.rss"
+    self.dir + "podcast.js"
   end
 
   def picture_link

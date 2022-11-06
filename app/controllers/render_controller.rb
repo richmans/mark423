@@ -1,6 +1,6 @@
 class RenderController < AdminController
   skip_before_action :verify_authenticity_token
-
+  layout false
 
   skip_before_action :authenticated
   skip_before_action :privileged

@@ -46,7 +46,7 @@ class GeneratePodcastJob < ApplicationJob
       podcast.js_file.attach(
         io: StringIO.new(rendered_string),
         filename: 'podcast.js',
-        content_type: 'application/json',
+        content_type: 'application/javascript',
         identify: false
       )
       rendered_string = RenderController.new.render_to_string(
