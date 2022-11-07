@@ -17,6 +17,23 @@ form.inline-form {
   display: inline;
 }
 
+div.sessions.login {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+div.sessions.login div.bible {
+  grid-column: 2;
+  align-self: center;
+}
+
+div.sessions.login div.bible blockquote {
+  margin-bottom: .5rem;
+  font-size: 20pt;
+}
+div.sessions.login div.bible cite {
+  margin-left: 3rem;
+}
 nav ul {
   list-style-type: none;
   margin: 0;
