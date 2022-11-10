@@ -26,7 +26,7 @@ class PrivilegesController < AdminController
 
     respond_to do |format|
       if @privilege.save
-        format.html { redirect_to podcast_privilege_url(@podcast, @privilege), notice: I18n.t("model_created", model: Privilege) }
+        format.html { redirect_to podcast_privileges_url(@podcast), notice: I18n.t("model_created", model: Privilege) }
         format.json { render :show, status: :created, location: @privilege }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class PrivilegesController < AdminController
   def update
     respond_to do |format|
       if @privilege.update(privilege_params)
-        format.html { redirect_to podcast_privilege_url(@podcast, @privilege), notice: I18n.t("model_updated", model: Privilege) }
+        format.html { redirect_to podcast_privileges_url(@podcast), notice: I18n.t("model_updated", model: Privilege) }
         format.json { render :show, status: :ok, location: @privilege }
       else
         format.html { render :edit, status: :unprocessable_entity }

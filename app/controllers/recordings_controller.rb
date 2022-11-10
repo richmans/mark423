@@ -3,7 +3,7 @@ class RecordingsController < AdminController
 
   # GET /recordings or /recordings.json
   def index
-    @recordings = current_podcast.recordings
+    @recordings = current_podcast.recordings.order(recorded_at: :desc)
   end
 
   # GET /recordings/1 or /recordings/1.json
@@ -27,7 +27,7 @@ class RecordingsController < AdminController
     
     respond_to do |format|
       if @recording.save
-        format.html { redirect_to recording_url(@recording), notice: I18n.t("model_created", model: Recording) }
+        format.html { redirect_to recordings_url(), notice: I18n.t("model_created", model: Recording) }
         format.json { render :show, status: :created, location: @recording }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class RecordingsController < AdminController
   def update
     respond_to do |format|
       if @recording.update(recording_params)
-        format.html { redirect_to recording_url(@recording), notice: I18n.t("model_updated", model: Recording) }
+        format.html { redirect_to recordings_url(), notice: I18n.t("model_updated", model: Recording) }
         format.json { render :show, status: :ok, location: @recording }
       else
         format.html { render :edit, status: :unprocessable_entity }

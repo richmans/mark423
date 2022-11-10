@@ -33,7 +33,7 @@ class UsersController < AdminController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to user_url(@user), notice: I18n.t("model_created", model: User) }
+        format.html { redirect_to users_url(), notice: I18n.t("model_created", model: User) }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -50,7 +50,7 @@ class UsersController < AdminController
     end
     
     if current_user.is_admin?
-      redirect = user_url(@user)
+      redirect = users_url()
     else
       redirect = profile_path
     end

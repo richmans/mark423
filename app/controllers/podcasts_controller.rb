@@ -34,7 +34,7 @@ class PodcastsController < AdminController
 
     respond_to do |format|
       if @podcast.save
-        format.html { redirect_to podcast_url(@podcast), notice: I18n.t("model_created", model: Podcast) }
+        format.html { redirect_to podcasts_url(), notice: I18n.t("model_created", model: Podcast) }
         format.json { render :show, status: :created, location: @podcast }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -56,7 +56,7 @@ class PodcastsController < AdminController
     end
     respond_to do |format|
       if @podcast.update(podcast_params)
-        format.html { redirect_to redirect, notice: I18n.t("model_updated", model: Podcast) }
+        format.html { redirect_to podcasts_url, notice: I18n.t("model_updated", model: Podcast) }
         format.json { render :show, status: :ok, location: @podcast }
       else
         format.html { render :edit, status: :unprocessable_entity }
