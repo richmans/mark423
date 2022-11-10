@@ -2,13 +2,22 @@
 
 <h1><%=t(:users)%></h1>
 
-<div id="users">
+<table id="users">
+  <tr>
+  <th>Name</th>
+  <th>Email</th>
+  <th></th>
+  </tr>
   <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to t(:model_show, model: User), user %>
-    </p>
+    <tr>
+    <td class='name'><%=user.full_name%></td>
+    <td class='email'><%=user.email%></td>
+    <td class='actions'>
+      <%= link_to t(:edit), edit_user_path(user) %>
+      <%= link_to t(:destroy), user_path(user), data: { "turbo-method": :delete, :turbo_confirm => 'Are you sure?' } %>
+    </td>
+    </tr>
   <% end %>
-</div>
+</table>
 
 <%= link_to t(:model_new, model: User), new_user_path %>

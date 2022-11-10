@@ -1,14 +1,25 @@
-<p style="color: green"><%= notice %></p>
-
 <h1><%=t(:recordings)%></h1>
 
-<div id="recordings">
+<table id="recordings">
+  <tr>
+  <th>Speaker</th>
+  <th>Date</th>
+  <th>Theme</th>
+  <th>Published</th>
+  <th></th>
+  </tr>
   <% @recordings.each do |recording| %>
-    <%= render recording %>
-    <p>
-      <%= link_to t(:model_show, model: Recording), recording %>
-    </p>
+    <tr>
+    <td class='speaker'><%=recording.speaker%></td>
+    <td class='date'><%=recording.recorded_at%></td>
+    <td class='theme'><%=recording.theme%></td>
+    <td class='published'><%=recording.published%></td>
+    <td class='actions'>
+      <%= link_to t(:edit), edit_recording_path(recording) %>
+      <%= link_to t(:destroy), recording, data: { "turbo-method": :delete, :turbo_confirm => 'Are you sure?' } %>
+    </td>
+    </tr>
   <% end %>
-</div>
+</table>
 
 <%= link_to t(:model_new, model: Recording), new_recording_path %>

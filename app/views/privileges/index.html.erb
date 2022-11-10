@@ -1,14 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<h1><%=t(:privileges)%></h1>
+<h1><%=t(:privileges)%> for <%=@podcast.name %></h1>
 
-<div id="privileges">
+<table>
+  <tr>
+  <th>User</th>
+  <th>Role</th>
+  <th></th>
+  </tr>
   <% @privileges.each do |privilege| %>
-    <%= render privilege %>
-    <p>
-      <%= link_to t(:model_show, model: Privilege), podcast_privilege_path(@podcast, privilege) %>
-    </p>
+    <tr>
+    <td class='username'><%=privilege.user.full_name%></td>
+    <td class='role'><%=privilege.role%></td>
+    <td class='actions'>
+      <%= link_to t(:edit), edit_podcast_privilege_path(@podcast, privilege) %>
+      <%= link_to t(:destroy), podcast_privilege_path(@podcast, privilege), data: { "turbo-method": :delete } %>
+    </td>
+    </tr>
   <% end %>
-</div>
+</table>
 
 <%= link_to t(:model_new, model: Privilege), new_podcast_privilege_path(@podcast) %>
