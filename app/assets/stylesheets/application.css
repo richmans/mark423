@@ -54,6 +54,34 @@ nav ul li.split {
 }
 
 nav .logo {
-  font-size: 2rem;
+  font-size: 2rem;  
+}
+
+div.card {
+  border: 2px solid var(--accent-bg);
+  margin-bottom: 20px;
+}
+div.card.podcast {
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  grid-template-rows: 1.5rem 1fr;
   
+}
+div.card.podcast img {
+  grid-column: 1;
+  grid-row: 1/ span 2 ;
+}
+
+div.card.podcast div.name {
+  grid-column: 2;
+  font-weight: 900;
+}
+
+div.card.podcast div.description {
+  grid-column: 2;
+}
+
+div.card.podcast div.actions {
+  grid-column: 3;
+  grid-row: 1 / span 2  
 }

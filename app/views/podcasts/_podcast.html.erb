@@ -1,53 +1,19 @@
-<div id="<%= dom_id podcast %>">
-  <p>
-    <strong>Name:</strong>
-    <%= podcast.name %>
-  </p>
 
-  <p>
-    <strong>Website:</strong>
-    <%= podcast.website %>
-  </p>
-
-  <p>
-    <strong>Shortname:</strong>
-    <%= podcast.shortname %>
-  </p>
-
-  <p>
-    <strong>Copyright:</strong>
-    <%= podcast.copyright %>
-  </p>
-
-  <p>
-    <strong>Author:</strong>
-    <%= podcast.author %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= podcast.email %>
-  </p>
-
-  <p>
-    <strong>Keywords:</strong>
-    <%= podcast.keywords %>
-  </p>
-  <p>
-    <strong>Description:</strong>
-    <%= podcast.description %>
-  </p>
-  <p>
-    <strong>Max recordings:</strong>
-    <%= podcast.max_recordings %>
-  </p>
-  
-  <p>
-  <b>Explicit:</b>
-  <%= podcast.explicit %>
-</p>
-
-  <% if podcast.image_file.attached?  %>
-    <%= image_tag podcast.image_file.variant(:thumb) %>
-  <% end %>
+<div id="<%= dom_id podcast %>" class="podcast card">
+    <% if podcast.image_file.attached?  %>
+      <%= image_tag podcast.image_file.variant(:thumb) %>
+    <% else %>
+      <%= image_tag "placeholder" %>
+    <% end %>
+  <div class='name'>
+    <%= podcast.name %> (<%= podcast.shortname %>)
+  </div>
+  <div class='description'>
+    <%= podcast.description%>
+  </div>
+  <div class='actions'>
+    <%= link_to t(:edit), edit_podcast_path(podcast) %>
+    <%= link_to t(:privileges), podcast_privileges_path(podcast) %>
+    <%= button_to t(:destroy), podcast, method: :delete %>
+  </div>
 </div>

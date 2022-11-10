@@ -5,9 +5,6 @@
 <div id="podcasts">
   <% @podcasts.each do |podcast| %>
     <%= render podcast %>
-    <p>
-      <%= link_to t(:model_show, model: Podcast), podcast %>
-    </p>
   <% end %>
 </div>
 
