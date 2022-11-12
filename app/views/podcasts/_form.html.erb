@@ -67,9 +67,9 @@
     <%= form.label :description, style: "display: block" %>
     <%= form.text_area :description %>
   </div>
-   <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.text_field :category %>
+  <div class="field">
+    <%= form.label :category %><br />
+    <%= render :partial => 'category_chooser', :locals => {:selected_categories => @podcast.parsed_category, :f => form} %>
   </div>
   <div>
     <%= form.submit %>

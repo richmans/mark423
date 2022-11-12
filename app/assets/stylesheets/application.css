@@ -85,3 +85,20 @@ div.card.podcast div.actions {
   grid-column: 3;
   grid-row: 1 / span 2  
 }
+
+div.category-chooser {
+  padding:10px;
+  background-color:  var(--accent-bg);
+  border: 2px dashed var(--text);
+  cursor: pointer;
+  
+}
+
+div.category-chooser.opened span.select {
+  display:none;  
+}
+
+div.category-chooser.closed div.categories {
+  height:0px;
+  overflow:hidden;
+}

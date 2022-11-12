@@ -1,0 +1,51 @@
+<%
+def category_id(category)
+  category = category.gsub("&", "")
+  category = category.gsub(" ", "")
+end
+
+def contains_key(haystack, needle)
+  if haystack.is_a? Array
+    return haystack.include? needle
+  elsif haystack.is_a? Hash
+    return haystack.keys.include? needle
+  else
+    return false
+  end
+end
+
+def render_category(category, selected_categories=nil)
+  key = (category.is_a? Hash) ? category.keys.first : category
+  selected = contains_key(selected_categories, key)
+  selected_sub_categories = selected_categories[key] rescue nil
+  render_category_checkbox key, '', 0, selected
+  if category.is_a? Hash
+    category[key].each do |sub_category|
+      selected = selected_sub_categories.include? sub_category rescue false
+      render_category_checkbox(key, sub_category, 1, selected)
+    end
+  end
+end
+
+def render_category_checkbox(category, sub_category, level, selected)
+  name = (sub_category.blank?) ? category : sub_category
+  handle = 'chkCategory-' + category_id(category)
+  handle += '-' + category_id(sub_category) unless sub_category.blank?
+  sub_handle = 'chkSubCat-' + category_id(category) unless sub_category.blank?
+  concat raw '&nbsp;&nbsp;' * level
+  concat tag("input", :type => 'checkbox', :value => "#{category},#{sub_category}", :class => "category-check #{sub_handle}", :checked => selected, :id => handle)
+  concat content_tag("label", name, :for => handle) 
+  concat tag("br")
+end
+
+%>
+<div class='category-chooser closed'>
+  <span class='select'>Click to select categories
+    <b><span id='num-selected'>(<%=selected_categories.flatten.flatten.size rescue 0%></span> selected)</b></span>
+  <div class='categories'>
+     <% Podcast.categories.each do |category| 
+       render_category category, selected_categories
+     end %>
+  </div>
+</div>
+<%= f.hidden_field :category, :class => 'category_selector' %>
