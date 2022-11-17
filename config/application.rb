@@ -20,7 +20,7 @@ module Mark423
     config.podcast_host = ENV['PODCAST_HOST'] || 'https://' +  config.app_domain + '/podcasts'
     
     config.active_job.queue_adapter = :delayed_job
-    # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = "Amsterdam"
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end

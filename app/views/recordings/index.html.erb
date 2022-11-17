@@ -1,25 +1,27 @@
 <h1><%=t(:recordings)%></h1>
 
+<%= link_to t(:model_new, model: Recording), new_recording_path %>
+
 <table id="recordings">
-  <tr>
-  <th>Speaker</th>
-  <th>Date</th>
-  <th>Theme</th>
-  <th>Published</th>
-  <th></th>
-  </tr>
   <% @recordings.each do |recording| %>
     <tr>
-    <td class='speaker'><%=recording.speaker%></td>
-    <td class='date'><%=recording.recorded_at%></td>
-    <td class='theme'><%=recording.theme%></td>
-    <td class='published'><%=recording.published%></td>
+    <% link_td recording, :speaker do %>
+       <%=recording.speaker%>&nbsp;-&nbsp;<span class='theme'><%=recording.theme%></span>
+    <% end %>
+    
+    <td class='date'><%=format_date(recording.recorded_at)%></td>
+    <td class='published'>
+      <% if recording.published%>
+        <%= inline_svg_tag 'check', :class => :ok %>
+      <% else %>
+      <%= inline_svg_tag 'warning', :class => :warning %>
+      <% end %>
+    </td>
     <td class='actions'>
-      <%= link_to t(:edit), edit_recording_path(recording) %>
-      <%= link_to t(:destroy), recording, data: { "turbo-method": :delete, :turbo_confirm => 'Are you sure?' } %>
+      <%= link_to recording, data: { "turbo-method": :delete, :turbo_confirm => 'Are you sure?' }  do %>
+        <%= inline_svg_tag 'delete' %>
+      <% end %>
     </td>
     </tr>
   <% end %>
 </table>
-
-<%= link_to t(:model_new, model: Recording), new_recording_path %>

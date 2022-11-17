@@ -10,6 +10,7 @@
   /* Default (light) theme */
   --bg: #fff;
   --accent-bg: #f5f7ff;
+  --accent-bg2: #f5f7ffa9;
   --text: #212121;
   --text-light: #585858;
   --border: #898EA4;
@@ -26,6 +27,7 @@
     color-scheme: dark;
     --bg: #212121;
     --accent-bg: #2b2b2b;
+    --accent-bg2: #3b3b3b;
     --text: #dcdcdc;
     --text-light: #ababab;
     --accent: #7994f7;
@@ -376,8 +378,6 @@ table {
   border-collapse: collapse;
   display: block;
   margin: 1.5rem 0;
-  overflow: auto;
-  width: 100%;
 }
 
 td,
@@ -392,7 +392,7 @@ th {
   font-weight: bold;
 }
 
-tr:nth-child(even) {
+tr:hover {
   /* Set every other cell slightly darker. Improves readability. */
   background-color: var(--accent-bg);
 }

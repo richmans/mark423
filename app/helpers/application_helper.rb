@@ -7,6 +7,17 @@ module ApplicationHelper
     Time.at(d.ceil).utc.strftime("%H:%M:%S")
   end
 
+  def format_date(d)
+    d.strftime("%d-%m-%Y")
+  end
+
+  def link_td(object, field, &block)
+    edit_path = send("edit_#{object.class.name.downcase}_path", object)
+    concat raw "<td class='#{field.to_s}'  onclick='javascript:window.location=\"#{edit_path}\"'>"
+    concat link_to capture(&block), edit_path, :class =>'row_link'
+    concat raw "</td>"
+  end
+  
   def current_controller()
     controller.controller_name.to_s
   end
