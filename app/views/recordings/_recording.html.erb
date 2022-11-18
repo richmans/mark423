@@ -1,48 +1,19 @@
-<div id="<%= dom_id recording %>">
-  <p>
-    <strong>Speaker:</strong>
-    <%= recording.speaker %>
-  </p>
-
-  <p>
-    <strong>Theme:</strong>
-    <%= recording.theme %>
-  </p>
-
-  <p>
-    <strong>Recorded at:</strong>
-    <%= recording.recorded_at %>
-  </p>
-
-  <p>
-    <strong>Published:</strong>
-    <%= recording.published %>
-  </p>
-  <p>
-    <strong>Visible:</strong>
-    <%= recording.visible %>
-  </p>
-  <p>
-    <strong>Audio:</strong>
-    <% if recording.audio_file.attached? %>
-    <br/><strong>Duration:</strong><%= recording_duration(recording) %><br/>
-    <%= audio_tag url_for(recording.audio_file), controls: true, preload: "none" %>
-    <% else %>
-    <p>No audio</p>
-    <% end %>
-  </p>
-  <p>
-    <strong>Description:</strong>
-    <%= recording.description %>
-  </p>
-  <p>
-    <strong>Filename: </strong>
-    <%= recording.filename %>
-  </p>
-  <% if recording.image_file.attached?  %>
-    <%= image_tag recording.image_file.variant(:thumb) %>
-  <% elsif recording.podcast.image_file.attached? %>
-    <%= image_tag recording.podcast.image_file.variant(:thumb) %>
+<tr>
+  <% link_td recording, :speaker do %>
+    <%=recording.speaker%>&nbsp;-&nbsp;<span class='theme'><%=recording.theme%></span>
   <% end %>
 
-</div>
+  <td class='date'><%=format_date(recording.recorded_at)%></td>
+  <td class='published'>
+    <% if recording.published%>
+      <%= inline_svg_tag 'check', :class => :ok, :title => t(:published) %>
+    <% else %>
+    <%= inline_svg_tag 'warning', :class => :warning, :title => t(:not_published) %>
+    <% end %>
+  </td>
+  <td class='actions'>
+    <%= link_to recording, data: { "turbo-method": :delete, :turbo_confirm => 'Are you sure?' }  do %>
+      <%= inline_svg_tag 'delete' %>
+    <% end %>
+  </td>
+</tr>

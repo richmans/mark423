@@ -3,7 +3,12 @@ class RecordingsController < AdminController
 
   # GET /recordings or /recordings.json
   def index
-    @recordings = current_podcast.recordings.order(recorded_at: :desc)
+    all_recordings = current_podcast.recordings.order(recorded_at: :desc)
+    page_limit = 50
+    @current_page = params[:page].to_i
+
+    @recordings = all_recordings.offset(page_limit*@current_page).limit(page_limit)
+    @next_page = @current_page + 1 if(all_recordings.count > page_limit*@current_page + page_limit)
   end
 
   # GET /recordings/1 or /recordings/1.json

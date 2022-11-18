@@ -3,25 +3,6 @@
 <%= link_to t(:model_new, model: Recording), new_recording_path %>
 
 <table id="recordings">
-  <% @recordings.each do |recording| %>
-    <tr>
-    <% link_td recording, :speaker do %>
-       <%=recording.speaker%>&nbsp;-&nbsp;<span class='theme'><%=recording.theme%></span>
-    <% end %>
-    
-    <td class='date'><%=format_date(recording.recorded_at)%></td>
-    <td class='published'>
-      <% if recording.published%>
-        <%= inline_svg_tag 'check', :class => :ok, :title => t(:published) %>
-      <% else %>
-      <%= inline_svg_tag 'warning', :class => :warning, :title => t(:not_published) %>
-      <% end %>
-    </td>
-    <td class='actions'>
-      <%= link_to recording, data: { "turbo-method": :delete, :turbo_confirm => 'Are you sure?' }  do %>
-        <%= inline_svg_tag 'delete' %>
-      <% end %>
-    </td>
-    </tr>
-  <% end %>
+
 </table>
+<%= turbo_frame_tag "load_more", src: recordings_path(format: :turbo_stream), loading: :lazy %>
