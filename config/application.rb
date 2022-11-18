@@ -16,8 +16,8 @@ module Mark423
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
 
-    config.app_domain = ENV['APP_DOMAIN'] || 'mark423.com'
-    config.podcast_host = ENV['PODCAST_HOST'] || 'https://' +  config.app_domain + '/podcasts'
+    config.app_url = ENV['APP_URL'] || 'https://mark423.com'
+    config.podcast_host = ENV['PODCAST_HOST'] || config.app_url + '/podcasts'
     
     config.active_job.queue_adapter = :delayed_job
     config.time_zone = "Amsterdam"
