@@ -66,11 +66,13 @@ div.card p {
   margin: 0;
 }
 div.card.podcast {
+  height: 100px;
   display: grid;
   grid-template-columns: 100px 1fr 100px;
   
 }
 div.card.podcast img {
+  
   grid-column: 1;
 }
 
