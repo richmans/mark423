@@ -1,9 +1,9 @@
 <h1><%=t(:podcasts)%></h1>
 
+<%= link_to t(:model_new, model: Podcast), new_podcast_path %>
+<p></p>
 <div id="podcasts">
   <% @podcasts.each do |podcast| %>
     <%= render podcast %>
   <% end %>
 </div>
-
-<%= link_to t(:model_new, model: Podcast), new_podcast_path %>

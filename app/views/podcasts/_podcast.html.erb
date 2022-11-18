@@ -5,11 +5,11 @@
     <% else %>
       <%= image_tag "placeholder" %>
     <% end %>
-  <div class='name'>
-    <%= podcast.name %> (<%= podcast.shortname %>)
-  </div>
-  <div class='description'>
-    <%= podcast.description%>
+  <div class='data'>
+    <p class='title'><%= podcast.name %> (<%= podcast.shortname %>) - <%=podcast.email%></p>
+    <p class='description'>
+      <%= podcast.description%>
+    </p>
   </div>
   <div class='actions'>
     <%= link_to t(:edit), edit_podcast_path(podcast) %>
