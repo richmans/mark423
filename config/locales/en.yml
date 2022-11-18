@@ -101,4 +101,6 @@ en:
       create: "Create %{model}"
       submit: "Save %{model}"
       update: "Update %{model}"
+  published: Published
+  not_published: Not published
 
