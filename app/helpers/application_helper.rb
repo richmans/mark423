@@ -13,8 +13,12 @@ module ApplicationHelper
 
   def link_td(object, field, &block)
     edit_path = send("edit_#{object.class.name.downcase}_path", object)
-    concat raw "<td class='#{field.to_s}'  onclick='javascript:window.location=\"#{edit_path}\"'>"
-    concat link_to capture(&block), edit_path, :class =>'row_link'
+    link_td_to_path edit_path, field, &block
+  end
+
+  def link_td_to_path(path, field, &block)
+    concat raw "<td class='#{field.to_s} row_link'  onclick='javascript:window.location=\"#{path}\"'>"
+    concat link_to capture(&block), path, :class =>'row_link'
     concat raw "</td>"
   end
   

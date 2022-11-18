@@ -102,5 +102,5 @@ en:
       submit: "Save %{model}"
       update: "Update %{model}"
   published: Published
-  not_published: Not published
+  not_published: Not publishedx
 

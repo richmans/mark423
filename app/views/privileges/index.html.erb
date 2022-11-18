@@ -2,22 +2,22 @@
 
 <h1><%=t(:privileges)%> for <%=@podcast.name %></h1>
 
+<%= link_to t(:model_new, model: Privilege), new_podcast_privilege_path(@podcast) %>
+
 <table>
-  <tr>
-  <th>User</th>
-  <th>Role</th>
-  <th></th>
-  </tr>
   <% @privileges.each do |privilege| %>
     <tr>
-    <td class='username'><%=privilege.user.full_name%></td>
-    <td class='role'><%=privilege.role%></td>
+    <% link_td_to_path  edit_podcast_privilege_path(@podcast, privilege), :username do %>
+      <%=privilege.user.full_name%>
+    <% end %>
+    <% link_td_to_path  edit_podcast_privilege_path(@podcast, privilege), :role do %>
+      <%=privilege.role%>
+    <% end %>
     <td class='actions'>
-      <%= link_to t(:edit), edit_podcast_privilege_path(@podcast, privilege) %>
-      <%= link_to t(:destroy), podcast_privilege_path(@podcast, privilege), data: { "turbo-method": :delete } %>
+      <%= link_to  podcast_privilege_path(@podcast, privilege), data: { "turbo-method": :delete, :turbo_confirm => 'Are you sure?' }  do %>
+        <%= inline_svg_tag 'delete' %>
+      <% end %>
     </td>
     </tr>
   <% end %>
 </table>
-
-<%= link_to t(:model_new, model: Privilege), new_podcast_privilege_path(@podcast) %>

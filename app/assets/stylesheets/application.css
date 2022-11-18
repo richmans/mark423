@@ -135,11 +135,17 @@ table tr td a.row_link {
   overflow: hidden;
   text-decoration: none;
   color: var(--text);
+  
+}
+
+table tr td.row_link {
+  cursor: pointer;
 }
 
 table tr td a.row_link span.theme {
   color: var(--text-light);
 }
-input[type=text] {
+input[type=text], input[type=password]{
   width: 100%;
 }
+
