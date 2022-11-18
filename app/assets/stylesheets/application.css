@@ -149,3 +149,11 @@ input[type=text], input[type=password]{
   width: 100%;
 }
 
+div.warning-banner {
+  background-color: var(--bg-yellow);
+  padding: 15px;
+  margin-bottom: 30px;
+}
+div.warning-banner div.title{
+  font-weight: 900;
+}

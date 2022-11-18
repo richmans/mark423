@@ -1,3 +1,16 @@
+<% if recording.published == false %>
+  <div class='warning-banner'>
+    <div class='title'>
+    <%= t(:this_recording_is_not_published_because) %>:
+    </div>
+    <ul>
+    <% recording.not_published_because.each do |reason| %>
+    <li><%=reason%></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with(model: recording) do |form| %>
   <% if recording.errors.any? %>
     <div style="color: red">

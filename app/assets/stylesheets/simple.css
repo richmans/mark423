@@ -11,6 +11,7 @@
   --bg: #fff;
   --accent-bg: #f5f7ff;
   --accent-bg2: #f5f7ffa9;
+  --bg-yellow: #ffdd33;
   --text: #212121;
   --text-light: #585858;
   --border: #898EA4;
@@ -26,6 +27,7 @@
   :root {
     color-scheme: dark;
     --bg: #212121;
+    --bg-yellow: rgb(85, 78, 25);
     --accent-bg: #2b2b2b;
     --accent-bg2: #3b3b3b;
     --text: #dcdcdc;
