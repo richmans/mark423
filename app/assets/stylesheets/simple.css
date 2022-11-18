@@ -21,7 +21,7 @@
   --code: #d81b60;
   --preformatted: #444;
   --marked: #ffdd33;
-  --disabled: #efefef;
+  --disabled: #565656;
 }
 
 /* Dark theme */
@@ -39,7 +39,7 @@
     --accent: #7994f7;
     --code: #f06292;
     --preformatted: #ccc;
-    --disabled: #111;
+    --disabled: rgb(144, 144, 144);
   }
   /* Add a bit of transparency so light media isn't so glaring in dark mode */
   img,

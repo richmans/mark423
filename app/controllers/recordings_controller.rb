@@ -32,7 +32,7 @@ class RecordingsController < AdminController
     
     respond_to do |format|
       if @recording.save
-        format.html { redirect_to recordings_url(), notice: I18n.t("model_created", model: Recording) }
+        format.html { redirect_to recordings_url(format: :html), notice: I18n.t("model_created", model: Recording) }
         format.json { render :show, status: :created, location: @recording }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -45,7 +45,7 @@ class RecordingsController < AdminController
   def update
     respond_to do |format|
       if @recording.update(recording_params)
-        format.html { redirect_to recordings_url(), notice: I18n.t("model_updated", model: Recording) }
+        format.html { redirect_to recordings_url(format: :html), notice: I18n.t("model_updated", model: Recording) }
         format.json { render :show, status: :ok, location: @recording }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -59,7 +59,7 @@ class RecordingsController < AdminController
     @recording.destroy
 
     respond_to do |format|
-      format.html { redirect_to recordings_url, notice: I18n.t("model_destroyed", model: Recording) }
+      format.html { redirect_to recordings_url(format: :html), notice: I18n.t("model_destroyed", model: Recording) }
       format.json { head :no_content }
     end
   end
