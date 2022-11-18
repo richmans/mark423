@@ -157,3 +157,20 @@ div.warning-banner {
 div.warning-banner div.title{
   font-weight: 900;
 }
+
+div.alert {
+  padding: 15px;
+  margin-bottom: 30px; 
+}
+
+div.alert-warning {
+  background-color: var(--bg-yellow);
+}
+
+div.alert-success {
+  background-color: var(--bg-green);
+}
+
+div.alert-danger {
+  background-color: var(--bg-red);
+}

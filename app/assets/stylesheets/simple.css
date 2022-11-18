@@ -12,6 +12,8 @@
   --accent-bg: #f5f7ff;
   --accent-bg2: #f5f7ffa9;
   --bg-yellow: #ffdd33;
+  --bg-green: rgb(184, 250, 184);
+  --bg-red: rgb(245, 161, 161);
   --text: #212121;
   --text-light: #585858;
   --border: #898EA4;
@@ -28,6 +30,8 @@
     color-scheme: dark;
     --bg: #212121;
     --bg-yellow: rgb(85, 78, 25);
+    --bg-red: rgb(109, 3, 3);
+    --bg-green: rgb(0, 45, 0);
     --accent-bg: #2b2b2b;
     --accent-bg2: #3b3b3b;
     --text: #dcdcdc;
