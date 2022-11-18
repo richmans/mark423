@@ -3,6 +3,6 @@
 <%= link_to t(:model_new, model: Recording), new_recording_path %>
 
 <table id="recordings">
-
+  <%= render partial: "recordings/recording", collection: @recordings %>
 </table>
-<%= turbo_frame_tag "load_more", src: recordings_path(format: :turbo_stream), loading: :lazy %>
+<%= turbo_frame_tag "load_more", src: recordings_path(format: :turbo_stream) %>
