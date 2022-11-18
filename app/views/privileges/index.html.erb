@@ -12,7 +12,7 @@
       <%=privilege.role%>
     <% end %>
     <td class='actions'>
-      <%= link_to  podcast_privilege_path(@podcast, privilege), data: { "turbo-method": :delete, :turbo_confirm => 'Are you sure?' }  do %>
+      <%= link_to  podcast_privilege_path(@podcast, privilege), data: { "turbo-method": :delete, :turbo_confirm => 'Are you sure?' }, title: t(:delete)  do %>
         <%= inline_svg_tag 'delete' %>
       <% end %>
     </td>

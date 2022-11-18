@@ -14,6 +14,6 @@
   <div class='actions'>
     <%= link_to t(:edit), edit_podcast_path(podcast) %>
     <%= link_to t(:privileges), podcast_privileges_path(podcast) %>
-    <%= link_to t(:destroy), podcast, data: { "turbo-method": :delete, :turbo_confirm => 'Are you sure?'} %>
+    <%= link_to t(:destroy), podcast, data: { "turbo-method": :delete, :turbo_confirm => 'Are you sure?'}, title: t(:delete) %>
   </div>
 </div>

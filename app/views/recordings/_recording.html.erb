@@ -12,7 +12,7 @@
     <% end %>
   </td>
   <td class='actions'>
-    <%= link_to recording, data: { "turbo-method": :delete, :turbo_confirm => 'Are you sure?' }  do %>
+    <%= link_to recording, data: { "turbo-method": :delete, :turbo_confirm => 'Are you sure?' }, title: t(:delete)  do %>
       <%= inline_svg_tag 'delete' %>
     <% end %>
   </td>
