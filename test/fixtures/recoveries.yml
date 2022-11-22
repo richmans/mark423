@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: one
+  user: one
   code: MyString
   valid_until: 2022-10-22 19:48:47
 
 two:
-  user_id: two
+  user: admin
   code: MyString
   valid_until: 2022-10-22 19:48:47
