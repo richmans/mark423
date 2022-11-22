@@ -22,5 +22,5 @@ Rails.application.routes.draw do
   post '/forgot', to: 'recover#create', as: "create_recovery"
   get '/forgot/reset', to: 'recover#use', as: "use_recovery"
   post '/forgot/reset', to: 'recover#reset'
-  root "home#index"
+  root "recordings#index"
 end

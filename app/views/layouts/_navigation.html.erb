@@ -1,7 +1,6 @@
 <nav>
   <ul>
     <li class='logo'>Mark423</li>
-    <li><%= link_to t("home"), root_path %></li>
     <% if current_role == 'manager' %>
     <li><%= link_to t("podcast"), current_podcast_path %></li>
     <% end %>

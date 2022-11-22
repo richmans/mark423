@@ -154,6 +154,10 @@ input[type=text], input[type=password]{
   width: 100%;
 }
 
+table#recordings td.date {
+  white-space: nowrap;
+}
+
 div.warning-banner {
   background-color: var(--bg-yellow);
   padding: 15px;

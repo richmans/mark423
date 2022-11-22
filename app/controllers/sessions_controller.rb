@@ -11,7 +11,7 @@ class SessionsController < AdminController
       else 
         session[:podcast_id] = nil
       end
-      redirect_to root_path
+      redirect_to recordings_path(format: :html)
     else
       flash[:error] = t(:login_failed)
       redirect_to login_path
