@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_22_174847) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_27_133645) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -94,6 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_22_174847) do
     t.datetime "updated_at", null: false
     t.string "filename"
     t.boolean "visible"
+    t.string "guid"
     t.index ["podcast_id"], name: "index_recordings_on_podcast_id"
   end
 

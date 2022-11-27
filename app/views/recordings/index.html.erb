@@ -5,4 +5,4 @@
 <table id="recordings">
   <%= render partial: "recordings/recording", collection: @recordings %>
 </table>
-<%= turbo_frame_tag "load_more", src: recordings_path(format: :turbo_stream) %>
+<%= turbo_frame_tag "load_more", src: recordings_path(format: :turbo_stream, params: {page: 1}) %>

@@ -4,7 +4,7 @@ class RecordingsController < AdminController
   # GET /recordings or /recordings.json
   def index
     all_recordings = current_podcast.recordings.order(recorded_at: :desc)
-    page_limit = 50
+    page_limit = 30
     @current_page = params[:page].to_i
 
     @recordings = all_recordings.offset(page_limit*@current_page).limit(page_limit)

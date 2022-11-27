@@ -1,7 +1,7 @@
  {
     id: '<%=recording.id%>',
     title: '<%=recording.theme%>',
-    guid: '<%=recording.audio_link%>',
+    guid: '<%=recording.guid%>',
     description: "<%= (recording.description.blank?) ? js_escape(@podcast.description) : js_escape(recording.description) %>",
     url: "<%=recording.audio_link%>",
     length: "<%=recording.audio_file.byte_size%>", 

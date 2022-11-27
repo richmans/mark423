@@ -55,6 +55,9 @@ class Recording < ApplicationRecord
 
   def set_filename
     self.filename = get_filename()
+    if self.guid == nil
+      self.guid = self.audio_link
+    end
     if self.audio_file.attached?
       self.audio_file.blob.update(filename: filename)
     end
