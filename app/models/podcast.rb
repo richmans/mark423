@@ -15,6 +15,13 @@ class Podcast < ApplicationRecord
 
   after_commit :schedule_render, on: [:create, :update],  unless: :skip_callbacks
   #after_touch :schedule_render, unless: :skip_callbacks
+  after_initialize :empty_category
+
+  def empty_category
+    if self.category.nil?
+      self.category = '{}'
+    end
+  end
 
   def visible_recordings
     self.recordings.where(published: true).max(self.max_recordings)

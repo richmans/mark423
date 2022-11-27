@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :privileges, dependent: :delete_all
+  has_many :recoveries, dependent: :delete_all
   has_many :podcasts, through: :privileges
   validates :email, presence: true, uniqueness: true
   validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP

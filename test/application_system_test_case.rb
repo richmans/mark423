@@ -8,7 +8,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     fill_in("email", with: email)
     fill_in("password", with: password)
     click_on "Log in"
-    assert_text("Welcome")
+    assert_text("Recordings")
   end
 
   def login_admin

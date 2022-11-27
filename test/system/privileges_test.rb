@@ -22,7 +22,6 @@ class PrivilegesTest < ApplicationSystemTestCase
     click_on "Create privilege"
 
     assert_text "Privilege was successfully created"
-    click_on "Back"
   end
 
   test "should update Privilege" do
@@ -36,7 +35,6 @@ class PrivilegesTest < ApplicationSystemTestCase
     click_on "Update privilege"
 
     assert_text "Privilege was successfully updated"
-    click_on "Back"
   end
 
   test "should destroy Privilege" do
