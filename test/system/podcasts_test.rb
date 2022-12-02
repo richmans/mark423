@@ -47,9 +47,10 @@ class PodcastsTest < ApplicationSystemTestCase
 
   test "should destroy Podcast" do
     login_admin
-    visit podcast_url(@podcast)
-    click_on "Destroy this Podcast", match: :first
-
+    visit podcasts_url
+    accept_alert do 
+      click_on "Delete", match: :first
+    end
     assert_text "Podcast was successfully destroyed"
   end
 end

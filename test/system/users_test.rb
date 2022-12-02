@@ -41,9 +41,10 @@ class UsersTest < ApplicationSystemTestCase
 
   test "should destroy User" do
     login_admin
-    visit user_url(@user)
-    click_on "Destroy this User", match: :first
-
+    visit users_url
+    accept_alert do
+      all("[title=Delete]").last.click
+    end
     assert_text "User was successfully destroyed"
   end
 end

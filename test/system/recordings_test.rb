@@ -36,8 +36,8 @@ class RecordingsTest < ApplicationSystemTestCase
 
   test "should update Recording" do
     login_admin
-    visit recording_url(@recording)
-    click_on "Edit this Recording", match: :first
+    visit recordings_url
+    click_on "MyString", match: :first
 
     fill_in "description", with: @recording.description
     check "Visible"
@@ -58,9 +58,10 @@ class RecordingsTest < ApplicationSystemTestCase
 
   test "should destroy Recording" do
     login_admin
-    visit recording_url(@recording)
-    click_on "Destroy this Recording", match: :first
-
+    visit recordings_url
+    accept_alert do
+      click_on "Delete", match: :first
+    end
     assert_text "Recording was successfully destroyed"
   end
 end
