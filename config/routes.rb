@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :privileges
     end
     resources :users
-    get '/render/player/:podcast_name', to: 'render#player'
+    get '/render/player/:podcast_name', to: 'render#player', as: 'render_player'
     get '/render/:podcast_name', to: 'render#show'
     post '/switch_podcast', to: 'sessions#switch_podcast'
     get '/noprivilege', to: 'request_podcast#index'  

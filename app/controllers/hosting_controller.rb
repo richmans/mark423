@@ -1,5 +1,6 @@
 class HostingController < ApplicationController
   skip_before_action :verify_authenticity_token
+  include ActiveStorage::SetCurrent
   def nope
     render plain: "nope", status: :not_found
   end

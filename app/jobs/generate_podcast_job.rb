@@ -61,6 +61,7 @@ class GeneratePodcastJob < ApplicationJob
         content_type: 'application/rss+xml',
         identify: false
       )
+      podcast.save!
     ensure
       unlock_podcast(podcast, version)
     end
