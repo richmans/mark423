@@ -7,11 +7,13 @@ class SessionsController < AdminController
     if !!@user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       if @user.podcasts.any?
-        session[:podcast_id] = @user.podcasts.first.id  
+        session[:podcast_id] = @user.podcasts.first.id
+        redirect_to recordings_path(format: :html)
       else 
         session[:podcast_id] = nil
+        redirect_to podcasts_path(format: :html)
       end
-      redirect_to recordings_path(format: :html)
+      
     else
       flash[:error] = t(:login_failed)
       redirect_to login_path

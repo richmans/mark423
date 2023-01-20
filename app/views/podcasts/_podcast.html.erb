@@ -3,7 +3,7 @@
     <% if podcast.image_file.attached?  %>
       <%= image_tag podcast.image_file.variant(:thumb) %>
     <% else %>
-      <%= image_tag "placeholder" %>
+      <%= image_tag "placeholder.png" %>
     <% end %>
   <div class='data'>
     <p class='title'><%= podcast.name %> (<%= podcast.shortname %>) - <%=podcast.email%></p>

@@ -76,3 +76,5 @@ group :test do
 end
 
 gem "inline_svg", "~> 1.8"
+gem "pg"
+gem "tzinfo-data"

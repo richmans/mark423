@@ -21,6 +21,7 @@ prod:
   secret_access_key:  <%=ENV['S3_SECRET_KEY']%>
   bucket:  <%=ENV['S3_BUCKET']%>
   endpoint:  <%=ENV['S3_ENDPOINT']%>
+  region: dontcare
   force_path_style: true
   public: true # This makes sure that stable public bucket urls are used instead of temporary signed urls
   

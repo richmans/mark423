@@ -6,14 +6,14 @@
   <td class='date'><%=format_date(recording.recorded_at)%></td>
   <td class='published'>
     <% if recording.published%>
-      <%= inline_svg_tag 'check', :class => :ok, :title => t(:published) %>
+      <%= inline_svg_tag 'check.svg', :class => :ok, :title => t(:published) %>
     <% else %>
-    <%= inline_svg_tag 'warning', :class => :warning, :title => t(:not_published) %>
+    <%= inline_svg_tag 'warning.svg', :class => :warning, :title => t(:not_published) %>
     <% end %>
   </td>
   <td class='actions'>
     <%= link_to recording, data: { "turbo-method": :delete, :turbo_confirm => 'Are you sure?' }, title: t(:delete)  do %>
-      <%= inline_svg_tag 'delete' %>
+      <%= inline_svg_tag 'delete.svg' %>
     <% end %>
   </td>
 </tr>

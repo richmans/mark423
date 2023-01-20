@@ -4,7 +4,11 @@ module ApplicationHelper
   end
 
   def format_duration(d)
-    Time.at(d.ceil).utc.strftime("%H:%M:%S")
+    if d.nil?
+      return "Unknown"
+    else
+      return Time.at(d.ceil).utc.strftime("%H:%M:%S")
+    end
   end
 
   def format_date(d)

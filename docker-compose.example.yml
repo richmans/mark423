@@ -1,0 +1,42 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      APP_URL: ${APP_URL}
+      PODCAST_HOST: ${PODCAST_HOST}
+      RAILS_ENV: production
+      S3_ACCESS_KEY: ${S3_ACCESS_KEY}
+      S3_SECRET_KEY: ${S3_SECRET_KEY}
+      S3_BUCKET: ${S3_BUCKET}
+      S3_ENDPOINT: ${S3_ENDPOINT}
+      DATABASE_URL: postgres://mark423:$POSTGRES_PASSWORD@db/mark423
+      SMTP_DOMAIN: mark423.local
+      SMTP_ADDRESS: mail
+      SMTP_PORT: 1025
+  minio:
+    image: "quay.io/minio/minio"
+    ports:
+      - 9000:9000
+      - 9090:9090
+    environment:
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      MINIO_ROOT_USER: ${MINIO_ROOT_PASSWORD:-root}
+    volumes:
+      -  minio:/data
+    command: ['server', '/data', '--console-address', ':9090']
+  db:
+    image: 'postgres'
+    environment:
+      POSTGRES_DB: mark423
+      POSTGRES_USER: mark423
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+  mail:
+    image: schickling/mailcatcher
+    ports:
+      - 1080:1080
+    
+volumes:
+  minio:
