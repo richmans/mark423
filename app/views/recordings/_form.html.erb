@@ -46,6 +46,9 @@
 
   <div>
     <%= form.label :audio_file, style: "display: block" %>
+    <% if recording.audio_file.attached? %>
+      <span><%= t(:audio_file_present)%></span>
+    <% end %>
     <%= form.file_field :audio_file, accept: 'audio/mp3' %>
   </div>
   <div>
@@ -54,6 +57,9 @@
   </div>
    <div>
     <%= form.label :image_file, style: "display: block" %>
+   <% if recording.image_file.attached? %>
+      <span><%= t(:image_file_present)%></span>
+    <% end %>
     <%= form.file_field :image_file, accept: 'image/png,image/gif,image/jpeg' %>
   </div>
 

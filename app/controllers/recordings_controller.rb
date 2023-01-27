@@ -18,6 +18,7 @@ class RecordingsController < AdminController
   # GET /recordings/new
   def new
     @recording = Recording.new
+    @recording.visible = true
     @recording.recorded_at = Time.now()
   end
 
