@@ -26,7 +26,7 @@ class Recording < ApplicationRecord
     
     self.published = self.not_published_because().length == 0
     if not was_published and self.published
-      PublicationMailer.publication(self).deliver_later
+      PublicationMailer.recording_published(self).deliver_later
     end
   end
 
