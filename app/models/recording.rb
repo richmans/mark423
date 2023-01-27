@@ -16,9 +16,6 @@ class Recording < ApplicationRecord
     self.set_published
     if was_published != self.published
       self.save
-      if self.published
-        PublicationMailer.publication(self).deliver
-      end
       return true
     end
     false
