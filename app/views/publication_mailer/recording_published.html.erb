@@ -1,12 +1,12 @@
 <p>Good news!</p>
 <p>A new recording has just been published</p>
-
-<p><b>Podcast:</b><%=@recording.podcast.name%></p>
-<p><b>Speaker:</b><%=@recording.speaker%></p>
-<p><b>Theme:</b> <%=@recording.theme%></p>
-<p><b>Recording time:</b> <%=@recording.recorded_at.strftime("%d-%m-%Y %H:%M:%S")%></p>
-<p><b>Duration:</b> <%=format_duration(@recording.audio_file.metadata['duration'])%></p>
-<p><b>Filesize:</b> <%=@recording.audio_file.byte_size%> bytes</p>
-
+<p>
+<b>Podcast:</b> <%=@recording.podcast.name%><br/>
+<b>Speaker:</b> <%=@recording.speaker%><br/>
+<b>Theme:</b> <%=@recording.theme%><br/>
+<b>Recording time:</b> <%=@recording.recorded_at.strftime("%d-%m-%Y %H:%M:%S")%><br/>
+<b>Duration:</b> <%=format_duration(@recording.audio_file.metadata['duration'])%><br/>
+<b>Filesize:</b> <%=@recording.audio_file.byte_size%> bytes<br/>
+</p>
 <p>Stay Awesome!</p>
 <p>The Mark423 notification monkey</p>
