@@ -36,6 +36,9 @@ Environment:
 ## Jobs
 `RAILS_ENV=development bundle exec rake jobs:work`
 
+## Scripts
+`bin/rails mark423:import PODCAST URL` to import a remote podcast into your platform
+
 ## THANKS
 
 * Icons from [svgrepo](https://www.svgrepo.com)

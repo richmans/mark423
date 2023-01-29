@@ -12,7 +12,7 @@ namespace :mark423 do
     url = ARGV[1]
     puts "Importing #{url} into #{podcast_shortname}"
     parsed_podcast = PodcastFetcher.new.fetch(url)
-    PodcastUpdater.new(podcast_shortname).update(parsed_podcast)
+    PodcastUpdater.new(podcast_shortname, parsed_podcast).update(parsed_podcast)
     exit 0
   end
 end

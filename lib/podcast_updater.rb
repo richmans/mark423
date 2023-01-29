@@ -2,10 +2,12 @@ require 'uri'
 require 'open-uri'
 
 class PodcastUpdater
-  def initialize(podcast_shortname)
+  def initialize(podcast_shortname, parsed_podcast)
     @podcast = Podcast.find_by(shortname: podcast_shortname)
     if @podcast == nil
       @podcast = Podcast.new()
+      @podcast.email = parsed_podcast.email
+      @podcast.name = parsed_podcast.title
       @podcast.shortname = podcast_shortname
     end
   end
@@ -38,6 +40,7 @@ class PodcastUpdater
     if not save_result
       puts "Errors while saving podcast:"
       puts @podcast.errors.full_messages
+      return
     end
     parsed_podcast.items.each do | i |
       update_item(i)
@@ -49,7 +52,11 @@ class PodcastUpdater
     if recording != nil
       return
     end
-    filename = File.basename(URI(i.guid).path)
+    begin
+      filename = File.basename(URI(i.guid).path)
+    rescue
+      filename = File.basename(URI(i.audio_url).path)
+    end
     puts "Importing recording #{i.title}"
     r = Recording.new
     r.filename = filename
