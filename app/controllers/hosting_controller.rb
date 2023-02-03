@@ -5,6 +5,13 @@ class HostingController < ApplicationController
     render plain: "nope", status: :not_found
   end
 
+  def index
+    @podcasts = Podcast.all
+
+    render :json, template: "hosting/index", status: :ok
+    
+  end
+
   def fetch_recording
     podcast = Podcast.find_by(shortname: params[:podcast])
     return nope if podcast.nil?
