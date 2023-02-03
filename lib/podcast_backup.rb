@@ -3,9 +3,10 @@ require 'uri'
 require 'open-uri'
 require 'net/http'
 require './podcast_fetcher.rb'
+require 'json'
 
 if ARGV.length != 2
-  puts "Usage: ./podcast_backup.rb <podcast url> <backup directory>"
+  puts "Usage: ./podcast_backup.rb <url_for_index.js> <root directory>"
   exit 1
 end
 puts "== Podcast Back'r-upper =="
@@ -37,7 +38,8 @@ def check_or_download_file(directory, file, url, expected_size)
   download_file(directory, file, url)
 end
 
-def main(url, directory)
+def backup_podcast(url, directory)
+  puts "=== PODCAST #{url} ==="
   rss_file = File.join(directory, 'podcast.rss')
   ensure_directory(directory)
   download_file(directory, 'podcast.rss', url)
@@ -49,6 +51,16 @@ def main(url, directory)
   parsed_podcast.items.each do | i |
     audio_file = File.basename(URI(i.audio_url).path)
     check_or_download_file(directory, audio_file, i.audio_url, i.bytes)
+  end
+end
+
+def main(root_url, root_dir)
+  ensure_directory(root_dir)
+  data = Net::HTTP.get_response(URI.parse(root_url)).body
+  podcasts = JSON.parse(data)
+  podcasts.each do |pod|
+    pod_dir = File.join(root_dir, pod['shortname'])
+    backup_podcast(pod['url'], pod_dir)
   end
 end
 
