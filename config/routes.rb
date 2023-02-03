@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get '/podcasts/:podcast/podcast', to: 'hosting#fetch_podcast', as: 'fetch_podcast'
-  get '/podcasts', to: 'hosting#index'
+  get '/podcasts', to: 'hosting#index', as: 'podcast_list'
   get '/podcasts/:podcast/:filename', to: 'hosting#fetch_recording'
   scope '/admin' do
     resources :recordings
