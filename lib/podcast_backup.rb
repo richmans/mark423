@@ -49,8 +49,12 @@ def backup_podcast(url, directory)
   image_file = File.basename(URI(parsed_podcast.image_url).path)
   download_file(directory, image_file, parsed_podcast.image_url)
   parsed_podcast.items.each do | i |
-    audio_file = File.basename(URI(i.audio_url).path)
-    check_or_download_file(directory, audio_file, i.audio_url, i.bytes)
+    begin
+      audio_file = File.basename(URI(i.audio_url).path)
+      check_or_download_file(directory, audio_file, i.audio_url, i.bytes)
+    rescue
+      puts "Oops that item failed"
+    end
   end
 end
 
@@ -60,7 +64,11 @@ def main(root_url, root_dir)
   podcasts = JSON.parse(data)
   podcasts.each do |pod|
     pod_dir = File.join(root_dir, pod['shortname'])
-    backup_podcast(pod['url'], pod_dir)
+    begin
+      backup_podcast(pod['url'], pod_dir)
+    rescue 
+      puts "Oops that failed"
+    end
   end
 end
 
