@@ -6,6 +6,7 @@ class ParsedItem
   attr_accessor :guid
   attr_accessor :description
   attr_accessor :audio_url
+  attr_accessor :bytes
   attr_accessor :category
   attr_accessor :publication_date
   attr_accessor :duration
@@ -86,6 +87,7 @@ class PodcastFetcher
     i.description = e.get_text('description').to_s.strip
     i.publication_date = e.get_text('pubDate').to_s
     i.duration = e.get_text('duration').to_s
+    i.bytes = e.get_elements('enclosure').first.attributes['length'].to_i
     i.author = e.get_text('itunes:author').to_s
     i.explicit = e.get_text('itunes:explicit').to_s.downcase == 'yes'
     i.audio_url = e.get_elements('enclosure').first.attributes['url']

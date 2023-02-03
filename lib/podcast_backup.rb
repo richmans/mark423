@@ -20,10 +20,21 @@ def ensure_directory(directory)
 end
 
 def download_file(directory, file, url)
+  puts "Downloading #{url}"
   fn = File.join(directory, file)
   URI.open(url) do |f|
     IO.copy_stream(f, fn)
   end
+end
+
+def check_or_download_file(directory, file, url, expected_size)
+  fn = File.join(directory, file)
+  if File.exists?(fn)
+    return if File.size(fn) == expected_size
+    puts "Expected #{expected_size} but found #{File.size(fn)}"
+  end
+  
+  download_file(directory, file, url)
 end
 
 def main(url, directory)
@@ -35,6 +46,10 @@ def main(url, directory)
   parsed_podcast = fetcher.parse_xml(xml)
   image_file = File.basename(URI(parsed_podcast.image_url).path)
   download_file(directory, image_file, parsed_podcast.image_url)
+  parsed_podcast.items.each do | i |
+    audio_file = File.basename(URI(i.audio_url).path)
+    check_or_download_file(directory, audio_file, i.audio_url, i.bytes)
+  end
 end
 
 main(url, directory)
