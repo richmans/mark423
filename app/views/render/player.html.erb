@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8"><title>Mark423 Player test</title></head>
 <body>
-<%= javascript_include_tag "mark423-player" %>
+<script src='<%=player_script_url(format: :js)%>'></script>
 <script type='text/javascript'>
   mark423({
     url: '<%=@podcast.js_link%>',

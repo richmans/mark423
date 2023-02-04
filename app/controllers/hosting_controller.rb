@@ -23,6 +23,10 @@ class HostingController < ApplicationController
     end
   end
 
+  def player
+    redirect_to ActionController::Base.helpers.asset_path("mark423-player")
+  end
+
   def fetch_podcast
     podcast = Podcast.find_by(shortname: params[:podcast])
     return nope if podcast.nil?
