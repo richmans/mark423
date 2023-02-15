@@ -10,6 +10,11 @@
       </ul>
     </div>
   <% end %>
+  <% unless  podcast.new_record? %>
+  <div class='podcast-url'>
+  <strong>Podcast url:</strong> <%=fetch_podcast_url(podcast, format: :rss)%>
+  </div>
+  <% end %>
 
   <div>
     <%= form.label :name, style: "display: block" %>

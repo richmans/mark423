@@ -184,3 +184,6 @@ div.alert-success {
 div.alert-danger {
   background-color: var(--bg-red);
 }
+div.podcast-url {
+  margin: 20px 0;
+}
