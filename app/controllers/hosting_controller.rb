@@ -24,7 +24,7 @@ class HostingController < ApplicationController
   end
 
   def player
-    redirect_to ActionController::Base.helpers.asset_path("mark423-player")
+    redirect_to ActionController::Base.helpers.asset_path("mark423-player.js")
   end
 
   def fetch_podcast
