@@ -187,3 +187,34 @@ div.alert-danger {
 div.podcast-url {
   margin: 20px 0;
 }
+
+
+label {
+  font-weight: 900;
+  text-transform: capitalize;
+}
+
+textarea {
+  height: 10em;
+}
+
+span.green {
+  color: green;
+}
+
+audio {
+  margin-right: 20px;
+}
+
+div.update-audio {
+  margin-bottom: 30px;
+  background-color: var(--accent-bg);
+  padding: 20px;
+}
+input[type=file] {
+  background-color: transparent;
+}
+
+a.download_audio {
+  vertical-align: top;
+}

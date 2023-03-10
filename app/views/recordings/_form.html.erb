@@ -47,9 +47,16 @@
   <div>
     <%= form.label :audio_file, style: "display: block" %>
     <% if recording.audio_file.attached? %>
-      <span><%= t(:audio_file_present)%></span>
+    <div class='update-audio'>
+      <span class='green'>✓</span><%= t(:audio_file_present)%> <br/>
+      <span><%= t(:update)%>:</span> <%= form.file_field :audio_file, accept: 'audio/mp3' %><br/>
+      <audio controls><source src='<%=recording.audio_file.url %>'></audio>
+      <%=link_to t(:download), recording.audio_file, class: :download_audio %> </span><br/>
+      </div>
+      
+    <% else %>
+      <%= form.file_field :audio_file, accept: 'audio/mp3' %>
     <% end %>
-    <%= form.file_field :audio_file, accept: 'audio/mp3' %>
   </div>
   <div>
     <%= form.label :description, style: "display: block" %>
@@ -58,7 +65,8 @@
    <div>
     <%= form.label :image_file, style: "display: block" %>
    <% if recording.image_file.attached? %>
-      <span><%= t(:image_file_present)%></span>
+       <span class='green'>✓</span><span><%= t(:image_file_present)%></span>
+       <span><%=t(:update)%>:</span>
     <% end %>
     <%= form.file_field :image_file, accept: 'image/png,image/gif,image/jpeg' %>
   </div>

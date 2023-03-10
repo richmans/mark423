@@ -54,6 +54,7 @@ en:
   podcasts: "Podcasts"
   recordings: "Recordings"
   logout: "Logout"
+  download: "Download"
   login: "Log in"
   error: error
   privileges_for_this_podcast: privileges for this podcast
@@ -105,5 +106,5 @@ en:
   not_published: Not published
   this_recording_is_not_published_because: This recording is not published because
   delete: Delete
-  audio_file_present: 'Audio file present. Update:'
-  image_file_present: 'Image file present. Update:'
+  audio_file_present: 'Audio file present.'
+  image_file_present: 'Image file present.'
