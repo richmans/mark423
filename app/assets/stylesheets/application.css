@@ -34,6 +34,13 @@ div.sessions.login div.bible blockquote {
 div.sessions.login div.bible cite {
   margin-left: 3rem;
 }
+
+nav {
+  background-color: var(--accent-bg);
+  text-align: center;
+  padding:  0.5rem 2rem 0.5rem;
+  grid-column: 1 / -1;
+}
 nav ul {
   list-style-type: none;
   margin: 0;
@@ -218,3 +225,11 @@ input[type=file] {
 a.download_audio {
   vertical-align: top;
 }
+
+svg.darkmode {
+  width: 32px;
+  height: 32px;
+  stroke: var(--text);
+  cursor: pointer;
+}
+
