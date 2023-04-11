@@ -32,6 +32,9 @@
   <% if is_admin? %>
     <%= form.label :is_admin, style: "display:block" %>
     <%= form.check_box :is_admin %>
+
+    <%= form.label :notifications, style: "display:block" %>
+    <%= form.check_box :notifications %>
   <% end %>
   <div>
     <%= form.submit %>

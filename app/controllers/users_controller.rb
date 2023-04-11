@@ -84,7 +84,7 @@ class UsersController < AdminController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      permitted = [:email, :password, :password_confirmation, :full_name]
+      permitted = [:email, :password, :password_confirmation, :full_name, :notifications]
       if current_user.is_admin
         permitted += [:is_admin]
       end
