@@ -4,7 +4,9 @@ class PublicationMailer < ApplicationMailer
   def recording_published(recording)
     @recording = recording
     emails = User.where(is_admin: true, notifications: true).collect(&:email)
-    mail to: emails, subject: "Podcast published"
+    if emails.any?
+      mail to: emails, subject: "Podcast published"
+    end
   end
 end
 
