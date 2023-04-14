@@ -8,7 +8,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     Rails.application.routes.default_url_options[:port] = Capybara.current_session.server.port
     Rails.application.config.app_url = "http://#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}"
     Rails.application.config.podcast_host = Rails.application.config.app_url + "/podcasts"
-    #ActiveStorage::Current.url_options = {protocol: 'http', host: Capybara.current_session.server.host, port: Capybara.current_session.server.port }
+    ActiveStorage::Current.url_options = {host: "http://#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}"}
   end
 
   def login_as(email, password)

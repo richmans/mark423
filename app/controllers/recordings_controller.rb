@@ -1,4 +1,5 @@
 class RecordingsController < AdminController
+  include ActiveStorage::SetCurrent
   before_action :set_recording, only: %i[ show edit update destroy ]
 
   # GET /recordings or /recordings.json
