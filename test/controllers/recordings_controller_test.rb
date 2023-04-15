@@ -2,6 +2,7 @@ require "test_helper"
 
 class RecordingsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    login_as('admin@mark423.test', 'admin')
     @recording = recordings(:one)
   end
 
@@ -20,7 +21,7 @@ class RecordingsControllerTest < ActionDispatch::IntegrationTest
       post recordings_url, params: { recording: { description: @recording.description, podcast_id: @recording.podcast_id, published: @recording.published, recorded_at: @recording.recorded_at, speaker: @recording.speaker, theme: @recording.theme } }
     end
 
-    assert_redirected_to recording_url(Recording.last)
+    assert_redirected_to recordings_url(format: :html)
   end
 
   test "should show recording" do
@@ -35,7 +36,7 @@ class RecordingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update recording" do
     patch recording_url(@recording), params: { recording: { description: @recording.description, podcast_id: @recording.podcast_id, published: @recording.published, recorded_at: @recording.recorded_at, speaker: @recording.speaker, theme: @recording.theme } }
-    assert_redirected_to recording_url(@recording)
+    assert_redirected_to recordings_url(format: :html)
   end
 
   test "should destroy recording" do
@@ -43,6 +44,6 @@ class RecordingsControllerTest < ActionDispatch::IntegrationTest
       delete recording_url(@recording)
     end
 
-    assert_redirected_to recordings_url
+    assert_redirected_to recordings_url(format: :html)
   end
 end

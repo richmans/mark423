@@ -4,7 +4,12 @@ one:
   name: MyString
   description: My description
   shortname: MyString
+  website: google.com
   copyright: MyString
   author: MyString
   email: MyString@my.string
   keywords: MyString
+  max_recordings: 100
+  language: nl
+  explicit: false
+  category: "{}"
