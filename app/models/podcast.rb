@@ -24,7 +24,7 @@ class Podcast < ApplicationRecord
   end
 
   def visible_recordings
-    self.recordings.where(published: true).max(self.max_recordings)
+    self.recordings.where(published: true).order(recorded_at: :desc).limit(self.max_recordings)
   end
 
   def self.categories
