@@ -41,7 +41,12 @@ class PodcastFetcher
   def fetch_url(url)
     uri = URI(url)
     if uri.scheme == 'http' || uri.scheme == 'https'
-      data = Net::HTTP.get_response(URI.parse(url)).body
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.read_timeout = 1
+      http.max_retries = 5
+      http.use_ssl = uri.scheme == 'https'
+      response = http.request(Net::HTTP::Get.new(uri.path))
+      data = response.body
     elsif uri.scheme == 'file'
       data = File.read(uri.path)
     else
