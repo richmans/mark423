@@ -78,7 +78,7 @@ class Recording < ApplicationRecord
   end
 
   def image_link
-    self.podcast.dir + self.filename + '.jpg'
+    self.podcast.dir + self.filename + self.image_file.filename.extension
   end
 
   def duration

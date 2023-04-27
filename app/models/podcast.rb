@@ -66,8 +66,7 @@ class Podcast < ApplicationRecord
   end
 
   def picture_link
-    # TODO: This should either be podcast.jpg or podcast.png
-    self.dir + self.image_file.filename.to_s
+    self.dir + "podcast." + self.image_file.filename.extension
   end
 
   def schedule_render
