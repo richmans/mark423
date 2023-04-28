@@ -12,7 +12,7 @@
   <% end %>
   <% unless  podcast.new_record? %>
   <div class='podcast-url'>
-  <strong>Podcast url:</strong> <%=fetch_podcast_url(podcast, format: :rss)%>
+  <strong>Podcast url:</strong> <%=fetch_podcast_url(podcast.shortname, format: :rss)%>
   </div>
   <% end %>
 
