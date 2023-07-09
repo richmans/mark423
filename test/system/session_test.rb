@@ -12,12 +12,12 @@ class SessionTest < ApplicationSystemTestCase
 
   test "logging in and out" do
     visit login_url
-    assert_selector("h2", text: "Log in to Mark423")
+    assert_selector("h2", text: "Log in to Mark4:23")
     fill_in("email", with: "dirk@mark423.test")
     fill_in("password", with: "dirk")
     click_on "Log in"
     assert_text("Recordings")
     click_on "Logout"
-    assert_selector "h2", text: "Log in to Mark423"
+    assert_selector "h2", text: "Log in to Mark4:23"
   end
 end
