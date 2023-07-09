@@ -233,3 +233,6 @@ svg.darkmode {
   cursor: pointer;
 }
 
+nav select {
+  min-width: 200px
+}
