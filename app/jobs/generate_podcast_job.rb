@@ -1,3 +1,4 @@
+require 'rss_cache_helper'
 class GeneratePodcastJob < ApplicationJob
   queue_as :default
 
@@ -31,6 +32,14 @@ class GeneratePodcastJob < ApplicationJob
     podcast.update_columns rendering: nil, rendered: version
   end
 
+  def save_local(podcast, rendered_string)
+    local_file = RssCacheHelper.get_local_path(podcast.shortname + '.rss')
+    puts("Putting rss in " + local_file)
+    File.open(local_file, 'w') do |file| 
+      file.write(rendered_string) 
+    end
+  end
+
   def perform(podcast, version)
     return if not lock_podcast(podcast, version)
     begin
@@ -55,6 +64,7 @@ class GeneratePodcastJob < ApplicationJob
         assigns: { podcast: podcast },
         layout: false
       )
+      self.save_local(podcast, rendered_string)
       podcast.rss_file.attach(
         io: StringIO.new(rendered_string),
         filename: 'podcast.rss',

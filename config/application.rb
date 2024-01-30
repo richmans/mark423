@@ -18,7 +18,7 @@ module Mark423
 
     config.app_url = ENV['APP_URL'] || 'https://mark423.com'
     config.podcast_host = ENV['PODCAST_HOST'] || config.app_url + '/podcasts'
-    
+    config.local_storage = "tmp/local"
     config.active_job.queue_adapter = :delayed_job
     config.time_zone = "Amsterdam"
     # config.eager_load_paths << Rails.root.join("extras")

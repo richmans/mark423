@@ -1,4 +1,5 @@
 class HostingController < ApplicationController
+  include RssCacheHelper
   skip_before_action :verify_authenticity_token
   include ActiveStorage::SetCurrent
   def nope
@@ -28,14 +29,30 @@ class HostingController < ApplicationController
     redirect_to ActionController::Base.helpers.asset_path("mark423-player.js")
   end
 
+  def serve_file(podcast, attachment, extension, mime)
+    filename = podcast.shortname + "." + extension
+    local_path = get_local_path(filename)
+    if not File.exists?(local_path)
+      File.open(local_path, 'wb') do |file| 
+        file.write(attachment.download) 
+      end          
+    end
+    
+    send_file(local_path,
+      :filename => filename,
+      :type => mime)
+    
+  end
+  
+
   def fetch_podcast
     podcast = Podcast.find_by(shortname: params[:podcast])
     return nope if podcast.nil?
     respond_to do |format|
-      format.jpeg { redirect_to podcast.image_file.url, status: :found, allow_other_host: true }
-      format.png { redirect_to podcast.image_file.url, status: :found, allow_other_host: true }
-      format.rss { redirect_to url_for(podcast.rss_file), status: :found, allow_other_host: true}
-      format.js { redirect_to url_for(podcast.js_file), status: :found, allow_other_host: true}
+      format.jpeg { serve_file podcast, podcast.image_file, "jpg", "image/jpeg" }
+      format.png { serve_file podcast, podcast.image_file, "png", "image/png" }
+      format.rss { serve_file podcast, podcast.rss_file, "rss", "application/rss+xml"}
+      format.js { serve_file podcast, podcast.js_file, "js", "text/javascript"}
       
     end
   end 
