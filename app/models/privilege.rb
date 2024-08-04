@@ -1,5 +1,5 @@
 class Privilege < ApplicationRecord
-  enum :role, [:viewer, :editor, :manager, :owner]
+  enum :role, [:viewer, :editor, :manager]
 
   belongs_to :user
   belongs_to :podcast
