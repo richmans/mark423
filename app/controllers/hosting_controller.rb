@@ -32,7 +32,7 @@ class HostingController < ApplicationController
   def serve_file(podcast, attachment, extension, mime)
     filename = podcast.shortname + "." + extension
     local_path = get_local_path(filename)
-    if not File.exists?(local_path)
+    if not File.exist?(local_path)
       File.open(local_path, 'wb') do |file| 
         file.write(attachment.download) 
       end          

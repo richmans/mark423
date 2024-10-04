@@ -25,7 +25,6 @@ class RecordingsTest < ApplicationSystemTestCase
     attach_file('recording_audio_file', Rails.root + 'test/fixtures/files/gameover.mp3', make_visible: true)
     attach_file "recording_image_file", file_fixture("fun.jpeg")
     click_on "Create recording"
-
     assert_text "Recording was successfully created"
     click_on "MyRecording"
     assert_text "Audio file was not analyzed yet"

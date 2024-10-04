@@ -55,9 +55,9 @@ class Recording < ApplicationRecord
     if self.guid == nil
       self.guid = self.audio_link
     end
-    if self.audio_file.attached?
-      self.audio_file.blob.update(filename: filename)
-    end
+    #if self.audio_file.attached?
+    #  self.audio_file.blob.update(filename: filename)
+    #end
   end
 
   def get_filename()
