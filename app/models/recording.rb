@@ -8,6 +8,9 @@ class Recording < ApplicationRecord
   before_update :set_filename
   before_update :set_published
   before_create :set_published
+  after_update :update_filename_in_storage
+  after_create :update_filename_in_storage
+
   scope :published, -> { where(published: true) }
   after_touch :maybe_publish
 
@@ -55,9 +58,12 @@ class Recording < ApplicationRecord
     if self.guid == nil
       self.guid = self.audio_link
     end
-    #if self.audio_file.attached?
-    #  self.audio_file.blob.update(filename: filename)
-    #end
+  end
+
+  def update_filename_in_storage
+    if self.audio_file.attached?
+     self.audio_file.blob.update(filename: filename)
+    end
   end
 
   def get_filename()
